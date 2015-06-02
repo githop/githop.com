@@ -1,0 +1,169 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700|Roboto:400,700,700italic,400italic);
+
+html {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+}
+
+body {
+  background-color: #81bb10;
+}
+
+#my-nav {
+  position: fixed;
+  z-index: 3;
+  //top: 0;
+}
+
+.main-card {
+  //position: relative;
+  background-color: #81bb10;
+  text-align: center;
+  color: black;
+
+  md-card {
+    margin: 0 auto;
+    width: 40%;
+    background-color: #fff;
+    z-index: 10;
+    position: relative;
+    top: 3em;
+  }
+}
+
+.md-avatar {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.md-avatar.res {
+  width: 36px;
+  border-radius: 50%;
+}
+
+.md-avatar.pie {
+  width: 96px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 52px;
+  left: 148px;
+
+}
+
+footer {
+  md-toolbar {
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+//laptop non-retina
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 1) {
+  .main-card {
+    //position: relative;
+    background-color: #81bb10;
+    text-align: center;
+    color: black;
+
+    md-card {
+      margin: 0 auto;
+      width: 60%;
+      background-color: #fff;
+      z-index: 10;
+      position: relative;
+      bottom: 2em;
+    }
+  }
+}
+
+//laptop retina
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (min-resolution: 192dpi) {
+  .main-card {
+    //position: relative;
+    background-color: #81bb10;
+    text-align: center;
+    color: black;
+
+    md-card {
+      margin: 0 auto;
+      width: 40%;
+      background-color: #fff;
+      z-index: 10;
+      position: relative;
+      bottom: 2em;
+    }
+  }
+}
+
+//ipad
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px ) {
+  .main-card {
+    //position: relative;
+    background-color: #81bb10;
+    text-align: center;
+    color: black;
+
+    md-card {
+      margin: 0 auto;
+      width: 40%;
+      background-color: #fff;
+      z-index: 10;
+      position: relative;
+      bottom: 2em;
+    }
+  }
+}
+
+
+//mobile phone
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px){
+
+
+  .main-card {
+    //position: relative;
+    background-color: #81bb10;
+    text-align: center;
+    color: black;
+
+    md-card {
+      margin: 0 auto;
+      width: 80%;
+      background-color: #fff;
+      z-index: 10;
+      position: relative;
+      top: 7em;
+    }
+  }
+}
+
+//md-icons stuff
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.tile  {font-size: 248px; }
+.fa.tile {
+  font-size: 232px;
+  padding-top: 16px;
+  padding-left: 48px;
+  font-size: 232px;
+}
+
+
+/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+   all your sass files automatically */
+// injector
+// endinjector
