@@ -87,11 +87,9 @@
               of three client apps (2 Angular, 1 PHP) and 2 server apps (Laravel API and PHP).</p>
 
             <md-list>
-              <md-list-item ng-repeat="win in Res.wins">
-                <i class="material-icons">done</i>
-                <div class="md-list-item-text">
-                  {{win.text}}
-                </div>
+              <md-list-item class="md-1-line" ng-repeat="win in Res.wins">
+                <i class="material-icons">done</i></br>
+                <div class="md-list-item-text" flex>{{win.text}}</div>
               </md-list-item>
             </md-list>
           </section>
@@ -172,8 +170,7 @@
             <div>September 2014</div>
           </div>
           <p>Authored presentation at meetup group on basic ruby data structures; i.e. strings and numbers. The series
-            is
-            tailored towards beginners.</p>
+            is tailored towards beginners. <a ng-href="http://rubybeginnerstrack.github.io/2014/10/15/basic-data-types.html">Blog Post</a> - <a ng-href="http://githop.github.io/slides_ruby_newby/">Slides</a></p>
         </md-card-content>
       </md-card>
 
