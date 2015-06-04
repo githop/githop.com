@@ -11,10 +11,6 @@
     function ResumeCtrl() {
       var Res = this;
 
-      Res.offsetAmt = 70;
-
-      Res.activeToc = 0;
-
       Res.toc = [
         {id: '#intro',       icon: 'face',      text: 'About'},
         {id: '#exp',         icon: 'work',      text: 'Experience'},

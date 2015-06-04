@@ -9,17 +9,18 @@
       $stateProvider
         .state('home.main', {
           url:'/',
-          templateUrl: 'app/home/home.tmpl.html'
+          templateUrl: 'app/home/home.tmpl.html',
+          controller: 'HomeCtrl as Home'
         })
         .state('home.resume', {
           url: '/resume',
           templateUrl: 'app/home/resume/resume.tmpl.html',
           controller: 'ResumeCtrl as Res'
+        })
+        .state('home.contact', {
+          url:'/contact',
+          templateUrl: 'app/home/contact.tmpl.html'
         });
-        //.state('home.contact', {
-        //  url:'/contact',
-        //  templateUrl: 'app/home/contact.tmpl.html'
-        //});
     });
 })();
 
