@@ -5,31 +5,26 @@ html {
   height: 100%;
 }
 
-body {
+body, #body {
   background-color: #81bb10;
 }
 
 #my-nav {
   position: fixed;
   z-index: 3;
-  //top: 0;
+  top: 0;
 }
 
-.main-card {
-  //position: relative;
-  background-color: #81bb10;
+md-card.splash-card {
+  position: fixed;
   text-align: center;
-  color: black;
-
-  md-card {
-    margin: 0 auto;
-    width: 40%;
-    background-color: #fff;
-    z-index: 10;
-    position: relative;
-    top: 3em;
-  }
-}
+  top: 3em;
+  left: 33%;
+  margin: 0 auto;
+  width: 33%;
+  background-color: #fff;
+  z-index: 10;
+};
 
 .md-avatar {
   width: 150px;
@@ -62,21 +57,16 @@ footer {
 and (min-device-width: 1200px)
 and (max-device-width: 1600px)
 and (-webkit-min-device-pixel-ratio: 1) {
-  .main-card {
-    //position: relative;
-    background-color: #81bb10;
+  md-card.splash-card {
+    position: fixed;
     text-align: center;
-    color: black;
-
-    md-card {
-      margin: 0 auto;
-      width: 60%;
-      background-color: #fff;
-      z-index: 10;
-      position: relative;
-      bottom: 2em;
-    }
-  }
+    top: 3em;
+    left: 33%;
+    margin: 0 auto;
+    width: 33%;
+    background-color: #fff;
+    z-index: 10;
+  };
 }
 
 //laptop retina
@@ -85,42 +75,32 @@ and (min-device-width: 1200px)
 and (max-device-width: 1600px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (min-resolution: 192dpi) {
-  .main-card {
-    //position: relative;
-    background-color: #81bb10;
+  md-card.splash-card {
+    position: fixed;
     text-align: center;
-    color: black;
-
-    md-card {
-      margin: 0 auto;
-      width: 40%;
-      background-color: #fff;
-      z-index: 10;
-      position: relative;
-      bottom: 2em;
-    }
-  }
+    top: 3em;
+    left: 33%;
+    margin: 0 auto;
+    width: 33%;
+    background-color: #fff;
+    z-index: 10;
+  };
 }
 
 //ipad
 @media only screen
   and (min-device-width: 768px)
   and (max-device-width: 1024px ) {
-  .main-card {
-    //position: relative;
-    background-color: #81bb10;
+  md-card.splash-card {
+    position: fixed;
     text-align: center;
-    color: black;
-
-    md-card {
-      margin: 0 auto;
-      width: 40%;
-      background-color: #fff;
-      z-index: 10;
-      position: relative;
-      bottom: 2em;
-    }
-  }
+    top: 3em;
+    left: 33%;
+    margin: 0 auto;
+    width: 33%;
+    background-color: #fff;
+    z-index: 10;
+  };
 }
 
 
@@ -129,23 +109,16 @@ and (min-resolution: 192dpi) {
 @media only screen
   and (min-device-width: 320px)
   and (max-device-width: 568px){
-
-
-  .main-card {
-    //position: relative;
-    background-color: #81bb10;
+  md-card.splash-card {
+    position: fixed;
     text-align: center;
-    color: black;
-
-    md-card {
-      margin: 0 auto;
-      width: 80%;
-      background-color: #fff;
-      z-index: 10;
-      position: relative;
-      top: 7em;
-    }
-  }
+    top: 7em;
+    left: 19%;
+    margin: 0 auto;
+    width: 66%;
+    background-color: #fff;
+    z-index: 10;
+  };
 }
 
 //md-icons stuff

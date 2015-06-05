@@ -9,10 +9,10 @@
       </md-toolbar>
       <md-card-content>
         <md-list class="toc">
-          <md-list-item ng-repeat="c in Res.toc">
+          <md-list-item ng-repeat="c in Res.toc" du-scrollspy du-smooth-scroll>
             <i class="material-icons">{{c.icon}}</i>
             <div class="md-list-item-text">
-              <md-button href="{{c.id}}" du-scrollspy du-smooth-scroll>{{c.text}}</md-button>
+              <md-button href="{{c.id}}" du-scrollspy du-smooth-scroll >{{c.text}}</md-button>
             </div>
           </md-list-item>
         </md-list>
@@ -45,11 +45,12 @@
             <div flex>
 
               <div class="pie-wrapper">
+                <tooltip ng-model="Res.selectedModel"></tooltip>
                 <img ng-src="./assets/images/profpic.jpg" class="md-avatar pie"/>
                 <donut ng-model="Res.skillsChart" width="200" height="200" radius="50" property="'value'"
                        mousemove="Res.openToolTip(model)" mouseleave="Res.closeToolTip()"></donut>
 
-                <tooltip ng-model="Res.selectedModel"></tooltip>
+
 
               </div>
             </div>
@@ -82,9 +83,7 @@
               <h4>Trainheroic</h4>
               <div>December 2014 - June 2015</div>
             </div>
-            <p>Trainheroic is a startup specializing fitness and coach / gym driven workout programs. Tech portfolio
-              consists
-              of three client apps (2 Angular, 1 PHP) and 2 server apps (Laravel API and PHP).</p>
+            <p>TrainHeroic is a startup specializing in fitness and coach/gym driven workout programs located in Boulder, CO. Product portfolio consists of three web apps, (coach/athlete portal and marketplace) and an iPhone app. Server stack consists of of a monolith PHP app being replaced by a Laravel API. Coach portal and marketplace client apps are AngularJS, athlete portal is currently being rewritten in Angular.</p>
 
             <md-list>
               <md-list-item class="md-1-line" ng-repeat="win in Res.wins">
@@ -171,6 +170,16 @@
           </div>
           <p>Authored presentation at meetup group on basic ruby data structures; i.e. strings and numbers. The series
             is tailored towards beginners. <a ng-href="http://rubybeginnerstrack.github.io/2014/10/15/basic-data-types.html">Blog Post</a> - <a ng-href="http://githop.github.io/slides_ruby_newby/">Slides</a></p>
+
+
+          <md-divider></md-divider>
+
+          <div layout="row" layout-align="space-between center">
+            <h4><a ng-href="http://www.meetup.com/RockyMountainAngularJS/photos/25863001/433553204/" target="_blank">Boulder AngularJS Meetup</a></h4>
+            <div>January 2015</div>
+          </div>
+          <p>Delivered talk on experiences using AngularJS with a Rails API. Presentation focused on PaddedPockets Rails and Angular architecture,  3rd party services,  development and design decisions along the way, followed by a Q&A session regarding the app. </p>
+
         </md-card-content>
       </md-card>
 
