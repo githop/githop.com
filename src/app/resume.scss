@@ -1,4 +1,5 @@
 
+
 a:link {
   text-decoration: none;
 }
@@ -19,6 +20,10 @@ div.tooltip {
   pointer-events: none;
 }
 
+#resume  {
+  background-color: #f1f1f1;
+  margin-top: 128px;
+}
 
   md-list.toc {
     md-list-item {
@@ -100,22 +105,11 @@ and (min-resolution: 192dpi) {
         color: #000;
       }
     }
-    //.skills-wrapper {
-    //  dt {
-    //
-    //  }
-    //  .skills {
-    //    margin: 0 auto;
-    //    text-align: center;
-    //    li {
-    //      display: inline;
-    //      padding: 2px;
-    //    }
-    //  }
-    //}
   }
 }
 
+
+//mobile
 @media only screen
 and (min-device-width: 320px)
 and (max-device-width: 568px) {
@@ -130,4 +124,28 @@ and (max-device-width: 568px) {
       }
     }
   }
+}
+
+//ipad
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px ) {
+  .md-avatar.pie {
+    width: 96px;
+    border-radius: 50%;
+    position: relative;
+    bottom: 52px;
+    left: 0
+
+  }
+  md-card.splash-card {
+    position: fixed;
+    text-align: center;
+    top: 3em;
+    left: 33%;
+    margin: 0 auto;
+    width: 33%;
+    background-color: #fff;
+    z-index: 10;
+  };
 }
