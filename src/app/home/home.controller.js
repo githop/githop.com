@@ -7,7 +7,7 @@
   function HomeCtrl() {
     var Home = this;
 
-    Home.howdy = "hello world";
+    Home.howdy = 'hello world';
 
   }
 
