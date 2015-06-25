@@ -21,7 +21,16 @@
         .state('home.blog', {
           url:'/blog',
           templateUrl: 'app/home/blog/blog.tmpl.html',
-          controller: 'BlogCtrl as Blog'
+          controller: 'BlogCtrl as Blog',
+          resolve: {
+            postsResolved: function(Posts){
+              if (!Posts.loaded) {
+                return Posts.loadAll();
+              } else {
+                return Posts.getPool();
+              }
+            }
+          }
         });
     });
 })();

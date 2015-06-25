@@ -7,22 +7,23 @@
     .controller('BlogCtrl', BlogCtrl);
 
   /*@ngInject*/
-    function BlogCtrl(Posts, $http) {
+    function BlogCtrl(postsResolved, Posts) {
      var Blog = this;
 
-      Posts.loadAll().then(function(articles){
-        Blog.posts = articles;
-      });
+      Blog.posts = postsResolved;
+      console.log(postsResolved);
+      Blog.logPool = function() {
+        console.log("logging pool", Posts._pool);
+      };
 
-      Posts.getArticle(2).then(function(article){
-        Blog.post = article;
-        console.log("here goes nothun",article);
-      });
+      Blog.getPost = function(id) {
+        Posts.getArticle(id).then(function(post){
+          console.log(post);
+        });
+      };
 
-      Posts.getArticle(2).then(function(article){
-        Blog.post = article;
-        console.log("here goes nothun",article);
-      });
+
+
 
     }
 })();

@@ -2,7 +2,15 @@
  *
  * Created by githop on 6/23/15.
  */
-
+// loadAll will get entire blog roll then load up object pool with post objects.
+// intent is to call this method in the router state and pass data to ctrl via resolve.
+// SHOW page for blog will use child state, and use article manager to pass data via resolve as well.
+// the above should be super fast because all data was fetched upon init blog load and cached.
+//
+//edge cases that need to be handled:
+// -add method to serialize single response for blog post; e.g. articles/1
+// --method should fetch resource, and serialize the response into a BlogPost obj and add it to the _pool
+// --logic should prob reside on the BlogPost class
 (function () {
   'use strict';
   angular.module('home')
@@ -14,6 +22,12 @@
     var baseUrl = 'http://localhost:3000/articles';
     var articleManager = {};
     articleManager._pool = {};
+    //toggled after loadAll
+    articleManager.loaded = false;
+
+    articleManager.getPool = function() {
+      return this._pool;
+    };
 
     articleManager._retrieveInstance = function(articleId, data) {
       var instance = this._pool[articleId];
@@ -50,7 +64,6 @@
       var article = this._search(articleId);
 
       if ( article ) {
-        console.log('resolving');
         dfd.resolve(article);
       } else {
         this._load(articleId, dfd);
@@ -95,7 +108,6 @@
               return img.relationships.article.data.id === articleObj.id;
             });
 
-
             _.each(ownHeaders, function(header){
               var headerOwnParas = _.filter(paragraphs, function(para){
                 return para.relationships.header.data.id === header.id;
@@ -104,12 +116,11 @@
             });
 
             var post = { 'id': articleObj.id, 'title': title, 'headers': ownHeaders, 'imgs': ownImgs };
-            var instance = new BlogPost(post);
-            console.log('blogPost instance', instance);
+            var instance = self._retrieveInstance(post.id, post);
             posts.push(instance);
           });
 
-
+          self.loaded = true;
           dfd.resolve(posts);
         })
         .error(function(){

@@ -1,3 +1,6 @@
 <div id="contact-page" layout="column" layout-padding layout-margin>
+  <md-button ng-click="Blog.logPool()">log pool</md-button>
+  <input type="number" ng-model="num">
+  <md-button ng-click="Blog.getPost(num)">get article by input id</md-button>
   <pre>{{Blog.posts | json}}</pre>
 </div>
