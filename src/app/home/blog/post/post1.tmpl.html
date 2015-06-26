@@ -5,13 +5,12 @@
       <md-card-content>
         <h1>{{Post.post.title}}</h1>
 
-        <div ng-repeat="header in Post.post.headers">
-          <h4>{{header.attributes.text}}</h4>
+        <h3>{{Post.post.headers[0].attributes.text}}</h3>
+        <div my-para header="Post.post.headers[0]" start="1" end="3"></div>
 
-          <div ng-repeat="para in header.paragraphs">
-            <p>{{para.attributes.body}}</p>
-          </div>
-        </div>
+        <h3>{{Post.post.headers[1].attributes.text}}</h3>
+        <div my-para header="Post.post.headers[1]" start="1" end="3"></div>
+
       </md-card-content>
     </md-card>
   </md-content>

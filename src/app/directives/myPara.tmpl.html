@@ -1,0 +1,8 @@
+<!--{{start}} {{end}}-->
+
+<!--<h1>{{header}}</h1>-->
+<!--<pre>{{header | json}}</pre>-->
+
+<div ng-repeat="para in header.paragraphs.slice(start -1, end)">
+  <p>{{para.attributes.body}}</p>
+</div>
