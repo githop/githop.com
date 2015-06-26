@@ -11,7 +11,10 @@
     function myPara() {
       return {
         restrict: 'A',
-        templateUrl: 'app/directives/myPara.tmpl.html',
+        template: [
+        '<div ng-repeat="para in header.paragraphs.slice(start -1, end)">',
+          '<p>{{para.attributes.body}}</p>',
+        '</div>'].join(''),
         scope: {
           header: '=',
           start: '@',
