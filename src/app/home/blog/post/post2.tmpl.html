@@ -4,14 +4,18 @@
       <img ng-src="{{Post.post.imgs[0].attributes.href}}" alt="{{Post.post.imgs[0].attributes.title}}"/>
       <md-card-content>
         <h1>{{Post.post.title}}</h1>
-        <img ng-src="{{Post.post.imgs[1].attributes.href}}" alt="{{Post.post.imgs[0].attributes.title}}"/>
-        <div ng-repeat="header in Post.post.headers">
-          <h4>{{header.attributes.text}}</h4>
+        <h3>{{Post.post.headers[0].attributes.text}}</h3>
 
-          <div ng-repeat="para in header.paragraphs">
-            <p>{{para.attributes.body}}</p>
-          </div>
-        </div>
+        <p my-para header="Post.post.headers[0]" start="1" end="2"></p>
+
+        <img ng-src="{{Post.post.imgs[1].attributes.href}}" alt="{{Post.post.imgs[0].attributes.title}}"/>
+
+        <p my-para header="Post.post.headers[0]" start="3" end="3"></p>
+
+        <h3>{{Post.post.headers[1].attributes.text}}</h3>
+
+        <p my-para header="Post.post.headers[1]" start="1" end="4"></p>
+
       </md-card-content>
     </md-card>
   </md-content>
