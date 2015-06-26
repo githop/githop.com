@@ -7,13 +7,13 @@
     .controller('BlogCtrl', BlogCtrl);
 
   /*@ngInject*/
-    function BlogCtrl(postsResolved, Posts) {
+    function BlogCtrl($state, postsResolved, Posts) {
      var Blog = this;
       Blog.posts = postsResolved;
 
+      //public functions
       Blog.getPost = getPost;
-      Blog.logPool = logPool;
-
+      Blog.goToPost = goToPost;
 
       function getPost() {
         Posts.getArticle(id).then(function(post){
@@ -21,8 +21,8 @@
         });
       }
 
-      function logPool() {
-        console.log(Posts.getPool());
+      function goToPost(id) {
+        $state.go('home.blog.post', {postId: id});
       }
 
     }

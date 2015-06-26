@@ -23,8 +23,19 @@
           templateUrl: 'app/home/blog/blog.tmpl.html',
           controller: 'BlogCtrl as Blog',
           resolve: {
-            postsResolved: function(Posts){
+            postsResolved: ['Posts', function(Posts){
               return Posts.loaded ? Posts.getPool() : Posts.loadAll();
+            }]
+          }
+        })
+        .state('home.blog.post', {
+          url: '/posts/{postId}',
+          views: {
+            'body@home': {
+              templateUrl: function($stateParams) {
+                return '/app/home/blog/post/post' + $stateParams.postId + '.tmpl.html';
+              },
+              controller: 'PostCtrl as Post'
             }
           }
         });
