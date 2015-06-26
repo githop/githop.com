@@ -9,22 +9,23 @@
   /*@ngInject*/
     function BlogCtrl(postsResolved, Posts) {
      var Blog = this;
-
       Blog.posts = postsResolved;
-      console.log(postsResolved);
-      Blog.logPool = function() {
-        console.log("logging pool", Posts._pool);
-      };
 
-      Blog.getPost = function(id) {
+      Blog.getPost = getPost;
+      Blog.logPool = logPool;
+
+
+      function getPost() {
         Posts.getArticle(id).then(function(post){
           console.log(post);
         });
-      };
+      }
 
-
-
+      function logPool() {
+        console.log(Posts.getPool());
+      }
 
     }
+
 })();
 

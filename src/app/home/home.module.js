@@ -24,11 +24,7 @@
           controller: 'BlogCtrl as Blog',
           resolve: {
             postsResolved: function(Posts){
-              if (!Posts.loaded) {
-                return Posts.loadAll();
-              } else {
-                return Posts.getPool();
-              }
+              return Posts.loaded ? Posts.getPool() : Posts.loadAll();
             }
           }
         });
