@@ -19,7 +19,8 @@
   /*@ngInject*/
   function Posts($http, $q, BlogPost) {
 
-    var baseUrl = 'http://localhost:3000/articles';
+    //var baseUrl = 'http://localhost:3000/articles';
+    var baseUrl = 'http://githop.com/articles';
     var articleManager = {};
     articleManager._pool = {};
     //toggled after loadAll
