@@ -4,6 +4,7 @@
  */
 
 (function () {
+  'use strict';
   angular.module('home', ['githopwww'])
     .config(function($stateProvider){
       $stateProvider
@@ -17,9 +18,26 @@
           templateUrl: 'app/home/resume/resume.tmpl.html',
           controller: 'ResumeCtrl as Res'
         })
-        .state('home.contact', {
-          url:'/contact',
-          templateUrl: 'app/home/contact.tmpl.html'
+        .state('home.blog', {
+          url:'/blog',
+          templateUrl: 'app/home/blog/blog.tmpl.html',
+          controller: 'BlogCtrl as Blog',
+          resolve: {
+            postsResolved: ['Posts', function(Posts){
+              return Posts.loaded ? Posts.getPool() : Posts.loadAll();
+            }]
+          }
+        })
+        .state('home.blog.post', {
+          url: '/posts/{postId}',
+          views: {
+            'body@home': {
+              templateUrl: function($stateParams) {
+                return 'app/home/blog/post/post' + $stateParams.postId + '.tmpl.html';
+              },
+              controller: 'PostCtrl as Post'
+            }
+          }
         });
     });
 })();

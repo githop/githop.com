@@ -4,6 +4,7 @@
 
 
 (function () {
+  'use strict';
   angular.module('githopwww')
     .directive('scrollNav', scrollNav);
     scrollNav.$inject = ['$window', '$$rAF', '$mdConstant'];

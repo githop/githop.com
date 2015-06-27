@@ -1,0 +1,19 @@
+<div id="contact-page" layout="column" layout-padding layout-margin>
+
+  <md-content>
+    <md-card ng-repeat="post in Blog.posts track by post.id">
+      <md-card-content>
+      <h1 ng-click="Blog.goToPost(post.id)">{{post.title}}</h1>
+
+      <div ng-repeat="header in post.headers">
+        <h4>{{header.attributes.text}}</h4>
+
+        <div ng-repeat="para in header.paragraphs">
+          <p>{{para.attributes.body}}</p>
+        </div>
+      </div>
+      </md-card-content>
+    </md-card>
+  </md-content>
+
+</div>
