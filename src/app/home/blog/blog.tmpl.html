@@ -1,17 +1,18 @@
-<div id="contact-page" layout="column" layout-padding layout-margin>
+<div id="blog-page" layout="column" layout-padding layout-margin>
 
   <md-content>
-    <md-card ng-repeat="post in Blog.posts track by post.id">
+    <md-card class="blog-card" ng-repeat="post in Blog.posts track by post.id" ng-click="Blog.goToPost(post.id)">
+      <img ng-src="{{post.imgs[$index].attributes.href}}">
       <md-card-content>
-      <h1 ng-click="Blog.goToPost(post.id)">{{post.title}}</h1>
 
-      <div ng-repeat="header in post.headers">
-        <h4>{{header.attributes.text}}</h4>
+      <h1>{{post.title}}</h1>
 
-        <div ng-repeat="para in header.paragraphs">
-          <p>{{para.attributes.body}}</p>
+        <h4>{{post.headers[$index].attributes.text}}</h4>
+
+        <div ng-repeat="header in post.headers">
+          <p>{{header.paragraphs[$index].attributes.body}}</p>
         </div>
-      </div>
+
       </md-card-content>
     </md-card>
   </md-content>
