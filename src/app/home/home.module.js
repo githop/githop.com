@@ -33,7 +33,7 @@
           views: {
             'body@home': {
               templateUrl: function($stateParams) {
-                return '/app/home/blog/post/post' + $stateParams.postId + '.tmpl.html';
+                return 'app/home/blog/post/post' + $stateParams.postId + '.tmpl.html';
               },
               controller: 'PostCtrl as Post'
             }
