@@ -81,25 +81,34 @@
         .success(function(articlesResp){
           var posts = [];
 
-          var articles = _.filter(articlesResp.data, function(article){
-            return article.type === 'articles';
+          var articles = _.filter(articlesResp.data, function(resource){
+            return resource.type === 'articles';
           });
 
-          var imgs = _.filter(articlesResp.included, function(article){
-            return article.type === 'imgs';
+          var imgs = _.filter(articlesResp.included, function(resource){
+            return resource.type === 'imgs';
           });
 
-          var paragraphs = _.filter(articlesResp.included, function(article){
-            return article.type === 'paragraphs';
+          var paragraphs = _.filter(articlesResp.included, function(resource){
+            return resource.type === 'paragraphs';
           });
 
-          var headers = _.filter(articlesResp.included, function(article){
-            return article.type === 'headers';
+          var headers = _.filter(articlesResp.included, function(resource){
+            return resource.type === 'headers';
+          });
+
+          var authors = _.filter(articlesResp.included, function(resource){
+            return resource.type === 'users'
           });
 
 
           _.each(articles, function(articleObj){
             var title = articleObj.attributes.title;
+            var datePosted = articleObj.attributes.posted_on;
+
+            var author = _.filter(authors, function(author){
+              return author.relationships.articles.data[0].id === articleObj.id;
+            });
 
             var ownHeaders = _.filter(headers, function(header){
               return header.relationships.article.data.id === articleObj.id;
@@ -109,6 +118,7 @@
               return img.relationships.article.data.id === articleObj.id;
             });
 
+
             _.each(ownHeaders, function(header){
               var headerOwnParas = _.filter(paragraphs, function(para){
                 return para.relationships.header.data.id === header.id;
@@ -116,7 +126,7 @@
               header.paragraphs = headerOwnParas;
             });
 
-            var post = { 'id': articleObj.id, 'title': title, 'headers': ownHeaders, 'imgs': ownImgs };
+            var post = { 'id': articleObj.id, 'title': title, 'author': author, 'datePosted': datePosted, 'headers': ownHeaders, 'imgs': ownImgs };
             var instance = self._retrieveInstance(post.id, post);
             posts.push(instance);
           });

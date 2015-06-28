@@ -2,16 +2,14 @@
 
   <md-content>
     <md-card class="blog-card" ng-repeat="post in Blog.posts track by post.id" ng-click="Blog.goToPost(post.id)">
-      <img ng-src="{{post.imgs[$index].attributes.href}}">
+      <img ng-src="{{post.imgs[0].attributes.href}}">
       <md-card-content>
 
       <h1>{{post.title}}</h1>
 
-        <h4>{{post.headers[$index].attributes.text}}</h4>
+        <h4>{{post.headers[0].attributes.text}}</h4>
 
-        <div ng-repeat="header in post.headers">
-          <p>{{header.paragraphs[$index].attributes.body}}</p>
-        </div>
+        <p>{{post.headers[0].paragraphs[0].attributes.body}}</p>
 
       </md-card-content>
     </md-card>

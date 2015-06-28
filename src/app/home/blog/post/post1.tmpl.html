@@ -1,9 +1,10 @@
-<div id="contact-page" layout="column" layout-padding layout-margin>
+<div id="blog-page" layout="column" layout-padding layout-margin>
   <md-content>
     <md-card>
       <img ng-src="{{Post.post.imgs[0].attributes.href}}" alt="{{Post.post.imgs[0].attributes.title}}"/>
       <md-card-content>
         <h1>{{Post.post.title}}</h1>
+        <p>Posted on: {{Post.post.datePosted | date}}, By:{{Post.post.author[0].attributes.username}}</p>
 
         <h3>{{Post.post.headers[0].attributes.text}}</h3>
         <p my-para header="Post.post.headers[0]" start="1" end="1"></p>
