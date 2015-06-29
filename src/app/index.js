@@ -24,7 +24,8 @@ angular.module('githopwww', [
             templateUrl: 'app/home/layout/shell.tmpl.html'
           },
           'nav@home': {
-            templateUrl:'app/home/layout/nav.tmpl.html'
+            templateUrl:'app/home/layout/nav.tmpl.html',
+            controller:'HomeCtrl as Home'
           },
           'body@home' :  {
             templateUrl: 'app/home/layout/body.tmpl.html'

@@ -10,8 +10,7 @@
       $stateProvider
         .state('home.main', {
           url:'/',
-          templateUrl: 'app/home/home.tmpl.html',
-          controller: 'HomeCtrl as Home'
+          templateUrl: 'app/home/home.tmpl.html'
         })
         .state('home.resume', {
           url: '/resume',

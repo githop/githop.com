@@ -1,18 +1,23 @@
 <div id="blog-page" layout="column" layout-padding layout-margin>
-
   <md-content>
-    <md-card class="blog-card" ng-repeat="post in Blog.posts track by post.id" ng-click="Blog.goToPost(post.id)">
-      <img ng-src="{{post.imgs[0].attributes.href}}">
-      <md-card-content>
+    <div ng-repeat="post in Blog.posts track by post.id" ng-click="Blog.goToPost(post.id)">
+      <md-card class="blog-card clickable">
+        <div class="header-bg"><img ng-src="{{post.imgs[0].attributes.href}}"></div>
+        <md-card-content>
 
-      <h1>{{post.title}}</h1>
+          <div layout="row" layout-align="space-between center">
+            <h1>{{post.title}}</h1>
+            <p>{{post.datePosted | date}}, by: {{post.author[0].attributes.username}}</p>
+          </div>
 
-        <h4>{{post.headers[0].attributes.text}}</h4>
 
-        <p>{{post.headers[0].paragraphs[0].attributes.body}}</p>
+          <h4>{{post.headers[0].attributes.text}}</h4>
 
-      </md-card-content>
-    </md-card>
+          <p>{{post.headers[0].paragraphs[0].attributes.body.slice(0,140)}}...</p>
+
+        </md-card-content>
+      </md-card>
+    </div>
   </md-content>
 
 </div>

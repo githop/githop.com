@@ -107,7 +107,7 @@
             var datePosted = articleObj.attributes.posted_on;
 
             var author = _.filter(authors, function(author){
-              return author.relationships.articles.data[0].id === articleObj.id;
+              return author.id === articleObj.relationships.user.data.id
             });
 
             var ownHeaders = _.filter(headers, function(header){
@@ -125,6 +125,7 @@
               });
               header.paragraphs = headerOwnParas;
             });
+
 
             var post = { 'id': articleObj.id, 'title': title, 'author': author, 'datePosted': datePosted, 'headers': ownHeaders, 'imgs': ownImgs };
             var instance = self._retrieveInstance(post.id, post);
