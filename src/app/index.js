@@ -15,23 +15,27 @@ angular.module('githopwww', [
   'ngDonut'
 ])
   .value('duScrollOffset', 70)
-  .config(function ($stateProvider, $urlRouterProvider) {
+
+  .constant('API_URL', 'http://localhost:3000')
+
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    $httpProvider.interceptors.push('AuthInterceptor');
+
     $stateProvider
       .state('home', {
         abstract: true,
         views: {
           '@': {
-            templateUrl: 'app/home/layout/shell.tmpl.html'
+            templateUrl: 'app/home/layout/shell.tmpl.html',
+            controller:'HomeCtrl as Home'
           },
           'nav@home': {
-            templateUrl:'app/home/layout/nav.tmpl.html',
-            controller:'HomeCtrl as Home'
+            templateUrl:'app/home/layout/nav.tmpl.html'
           },
           'body@home' :  {
             templateUrl: 'app/home/layout/body.tmpl.html'
           }
-        },
-        controller: 'HomeCtrl as Home'
+        }
       });
 
     $urlRouterProvider.otherwise('/');
