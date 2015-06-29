@@ -10,7 +10,8 @@
     Home.howdy = 'hello world';
 
     Home.loginModal = loginModal;
-    Home.currentUser = User.user;
+    Home.logOut = logOut;
+    Home.currentUser = User.init();
 
 
     function loginModal(ev) {
@@ -23,8 +24,7 @@
       })
         .then(function(u){
           User.login(u.email, u.password).then(function(user){
-            console.log(user);
-            console.log(User.user);
+            Home.currentUser = user;
           });
         });
 
@@ -40,6 +40,11 @@
           $mdDialog.hide();
         };
       }
+    }
+
+    function logOut() {
+      User.logout();
+      Home.currentUser = User.user;
     }
 
   }

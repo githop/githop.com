@@ -3,7 +3,8 @@
   <md-button ui-sref="home.resume">resume</md-button>
   <md-button ui-sref="home.blog">blog</md-button>
   <span flex></span>
-  <md-button ng-click="Home.loginModal()">Login</md-button>
+  <md-button ng-show="!Home.currentUser" ng-click="Home.loginModal()">Login</md-button>
+  <md-button ng-show="Home.currentUser" ng-click="Home.logOut()">Logout</md-button>
 </h4>
 
 <script type="text/ng-template" id="dialog1.tmpl.html">
