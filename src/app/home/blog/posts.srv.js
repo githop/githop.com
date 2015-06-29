@@ -17,10 +17,8 @@
     .factory('Posts', Posts);
 
   /*@ngInject*/
-  function Posts($http, $q, BlogPost) {
+  function Posts($http, $q, BlogPost, API_URL) {
 
-    //var baseUrl = 'http://localhost:3000/articles';
-    var baseUrl = 'http://githop.com/articles';
     var articleManager = {};
     articleManager._pool = {};
     //toggled after loadAll
@@ -50,7 +48,7 @@
     articleManager._load = function(articleId, dfd) {
       var self = this;
 
-      $http.get(baseUrl + '/' + articleId)
+      $http.get(API_URL + '/articles/' + articleId)
         .success(function(articleData){
           var article = self._retrieveInstance(articleData.data.id, articleData);
           dfd.resolve(article);
@@ -77,7 +75,7 @@
       var dfd = $q.defer();
       var self = this;
 
-      $http.get(baseUrl)
+      $http.get(API_URL + '/articles')
         .success(function(articlesResp){
           var posts = [];
 
