@@ -1,6 +1,6 @@
 <div id="blog-page" layout="column" layout-padding layout-margin>
   <md-content>
-    <div ng-repeat="post in Blog.posts track by post.id" ng-click="Blog.goToPost(post.id)">
+    <div ng-repeat="post in Blog.posts | orderBy:'-datePosted' track by post.id" ng-click="Blog.goToPost(post.id)">
       <md-card class="blog-card clickable">
         <div class="header-bg"><img ng-src="{{post.imgs[0].attributes.href}}"></div>
         <md-card-content>
