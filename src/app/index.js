@@ -16,7 +16,7 @@ angular.module('githopwww', [
 ])
   .value('duScrollOffset', 70)
 
-  .constant('API_URL', 'http://localhost:3000')
+  .constant('API_URL', 'http://githop.com')
 
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
