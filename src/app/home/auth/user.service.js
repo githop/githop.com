@@ -8,11 +8,11 @@
   angular.module('githopwww')
     .factory('User', User);
 
-  /*ngInject*/
-    function User($http, $q, API_URL, AuthToken, $window) {
+    /*ngInject*/
+    function User(AuthToken, API_URL, $http, $q, $window) {
 
       var User = {};
-      User.user = '';
+      User.user = undefined;
 
       var parseJwt = function(token) {
         var base64Url = token.split('.')[1];
@@ -21,19 +21,17 @@
       };
 
       var setCurrentUser = function(token) {
-        var user = parseJwt(token);
-        User.user = user;
-        return user;
+        User.user = parseJwt(token);
+        return User.user;
       };
 
-      var init = function() {
+      User.init = function() {
         if ($window.localStorage['auth-token']) {
-          console.log('init call');
-          setCurrentUser($window.localStorage.getItem('auth-token'));
+          return setCurrentUser($window.localStorage.getItem('auth-token'));
         }
       };
 
-      init();
+      User.init();
 
       User.login = function(email, password) {
         var dfd = $q.defer();
@@ -42,7 +40,7 @@
             email: email,
             password: password
           }
-        }).then(function success(resp){
+        }).then(function(resp){
           AuthToken.setToken(resp.data.token);
           var user = setCurrentUser(resp.data.token);
           dfd.resolve(user);
@@ -55,6 +53,7 @@
 
       User.logout = function() {
         AuthToken.setToken();
+        return this.user = undefined;
       };
 
       return User;
