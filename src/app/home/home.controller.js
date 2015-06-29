@@ -28,6 +28,7 @@
           });
         });
 
+      /*ngInject*/
       function dialogController($mdDialog) {
         var dialog = this;
         dialog.test = "hello world";
