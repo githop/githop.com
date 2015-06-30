@@ -12,7 +12,7 @@
     function User(AuthToken, API_URL, $http, $q, $window) {
 
       var User = {};
-      User.user = undefined;
+      User._user = undefined;
 
       var parseJwt = function(token) {
         var base64Url = token.split('.')[1];
@@ -21,8 +21,8 @@
       };
 
       var setCurrentUser = function(token) {
-        User.user = parseJwt(token);
-        return User.user;
+        User._user = parseJwt(token);
+        return User._user;
       };
 
       User.init = function() {
@@ -53,7 +53,11 @@
 
       User.logout = function() {
         AuthToken.setToken();
-        return this.user = undefined;
+        return this._user = undefined;
+      };
+
+      User.currentUser = function() {
+        return this._user;
       };
 
       return User;
