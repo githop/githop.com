@@ -12,28 +12,35 @@
     function User(AuthToken, API_URL, $http, $q, $window) {
 
       var User = {};
+      //private properties
       User._user = undefined;
 
-      var parseJwt = function(token) {
+      //public methods binding
+      User.login = login;
+      User.logout = logout;
+      User.currentUser = currentUser;
+
+      //private methods
+      var _parseJwt = function(token) {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace('-', '+').replace('_', '/');
         return JSON.parse($window.atob(base64));
       };
 
-      var setCurrentUser = function(token) {
-        User._user = parseJwt(token);
+      var _setCurrentUser = function(token) {
+        User._user = _parseJwt(token);
         return User._user;
       };
 
-      User.init = function() {
+      var _init = function() {
         if ($window.localStorage['auth-token']) {
-          return setCurrentUser($window.localStorage.getItem('auth-token'));
+          return _setCurrentUser($window.localStorage.getItem('auth-token'));
         }
       };
 
-      User.init();
+      _init();
 
-      User.login = function(email, password) {
+      function login(email, password) {
         var dfd = $q.defer();
         $http.post(API_URL + '/auth/login', {
           data: {
@@ -42,23 +49,23 @@
           }
         }).then(function(resp){
           AuthToken.setToken(resp.data.token);
-          var user = setCurrentUser(resp.data.token);
+          var user = _setCurrentUser(resp.data.token);
           dfd.resolve(user);
         }, function error(e){
           dfd.reject(e);
         });
 
         return dfd.promise;
-      };
+      }
 
-      User.logout = function() {
+      function logout() {
         AuthToken.setToken();
-        return this._user = undefined;
-      };
+        return User._user = undefined;
+      }
 
-      User.currentUser = function() {
-        return this._user;
-      };
+      function currentUser() {
+        return User._user;
+      }
 
       return User;
     }
