@@ -42,9 +42,7 @@
     };
 
     articleManager._search = function(articleId) {
-      var hit = _.find(this._pool, function(article){
-        return article.id == articleId;
-      });
+      return _.find(this._pool, {'id': articleId});
     };
 
     articleManager._load = function(articleId, dfd) {
