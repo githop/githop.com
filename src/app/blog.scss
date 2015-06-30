@@ -31,6 +31,13 @@ md-card.blog-card {
   width: 66%;
 }
 
+.post-img {
+  text-align: center;
+  img {
+    width:90%;
+  }
+}
+
 .clickable {
   cursor: pointer;
 }
