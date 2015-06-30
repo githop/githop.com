@@ -22,24 +22,19 @@
     var articleManager = {};
     articleManager._pool = [];
 
-    articleManager.getPool = function() {
-      return this._pool;
-    };
-
     articleManager._retrieveInstance = function(articleId, data, afterInit) {
       var instance = this._search(articleId);
 
       if ( instance ) {
-        instance.setData();
+        return instance;
       } else {
-        if (afterInit) {
+        if ( afterInit ) {
           instance = new BlogPost(data, afterInit);
         } else {
           instance = new BlogPost(data);
         }
+        this._pool.push( instance );
       }
-
-      this._pool.push( instance );
 
       return instance;
     };
@@ -59,6 +54,10 @@
         .error(function(){
           dfd.reject();
         });
+    };
+
+    articleManager.getPool = function() {
+      return this._pool;
     };
 
     articleManager.getArticle = function(articleId) {

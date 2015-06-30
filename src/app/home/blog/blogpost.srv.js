@@ -10,16 +10,12 @@
   function BlogPost() {
 
     var Post = function (article, afterInit) {
-      if (afterInit) {
-        this.setData(article, afterInit)
-      } else {
-        this.setData(article);
-      }
+      afterInit ? this.setData(article, afterInit) : this.setData(article);
     };
 
-    Post.prototype.setData = function(articleData, afterInit) {
+    Post.prototype.setData = function (articleData, afterInit) {
 
-      if ( !afterInit  ) {
+      if (!afterInit) {
         angular.extend(this, articleData);
         return;
       }
@@ -28,32 +24,35 @@
 
       var datePosted = articleData.data.attributes.posted_on;
 
-      var author = _.filter(articleData.included, function(resource){
+      var author = _.filter(articleData.included, function (resource) {
         return resource.type === 'users'
       });
 
-      var imgs = _.filter(articleData.included, function(resource){
+      var imgs = _.filter(articleData.included, function (resource) {
         return resource.type === 'imgs';
       });
 
-      var paragraphs = _.filter(articleData.included, function(resource){
+      var paragraphs = _.filter(articleData.included, function (resource) {
         return resource.type === 'paragraphs';
       });
 
-      var headers = _.filter(articleData.included, function(resource){
+      var headers = _.filter(articleData.included, function (resource) {
         return resource.type === 'headers';
       });
 
-      _.each(headers, function(header){
-        var headerOwnParas = _.filter(paragraphs, function(para){
+      _.each(headers, function (header) {
+        var headerOwnParas = _.filter(paragraphs, function (para) {
           return para.relationships.header.data.id === header.id;
         });
         header.paragraphs = headerOwnParas;
       });
 
+      var post = {
+        'id': articleData.data.id, 'title': title,
+        'author': author, 'datePosted': datePosted,
+        'headers': headers, 'imgs': imgs
+      };
 
-
-      var post = { 'id': articleData.data.id, 'title': title, 'author': author, 'datePosted': datePosted, 'headers': headers, 'imgs': imgs };
       angular.extend(this, post);
     };
 
