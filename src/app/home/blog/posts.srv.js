@@ -21,22 +21,25 @@
 
     var articleManager = {};
     articleManager._pool = [];
-    //toggled after loadAll
-    articleManager.loaded = false;
 
     articleManager.getPool = function() {
       return this._pool;
     };
 
-    articleManager._retrieveInstance = function(articleId, data) {
+    articleManager._retrieveInstance = function(articleId, data, afterInit) {
       var instance = this._search(articleId);
 
       if ( instance ) {
         instance.setData();
       } else {
-        instance = new BlogPost(data);
-        this._pool.push( instance );
+        if (afterInit) {
+          instance = new BlogPost(data, afterInit);
+        } else {
+          instance = new BlogPost(data);
+        }
       }
+
+      this._pool.push( instance );
 
       return instance;
     };
@@ -50,7 +53,7 @@
 
       $http.get(API_URL + '/articles/' + articleId)
         .success(function(articleData){
-          var article = self._retrieveInstance(articleData.data.id, articleData);
+          var article = self._retrieveInstance(articleData.data.id, articleData, true);
           dfd.resolve(article);
         })
         .error(function(){
@@ -130,7 +133,6 @@
             posts.push(instance);
           });
 
-          self.loaded = true;
           dfd.resolve(posts);
         })
         .error(function(){
@@ -151,6 +153,14 @@
 
       return article;
     };
+
+    articleManager.init = function() {
+      if (this._pool.length == 0) {
+        return this.loadAll();
+      }
+    };
+
+    articleManager.init();
 
     return articleManager;
   }

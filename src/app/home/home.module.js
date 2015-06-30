@@ -20,12 +20,7 @@
         .state('home.blog', {
           url:'/blog',
           templateUrl: 'app/home/blog/blog.tmpl.html',
-          controller: 'BlogCtrl as Blog',
-          resolve: {
-            postsResolved: ['Posts', function(Posts){
-              return Posts.loaded ? Posts.getPool() : Posts.loadAll();
-            }]
-          }
+          controller: 'BlogCtrl as Blog'
         })
         .state('home.blog.post', {
           url: '/posts/{postId}',

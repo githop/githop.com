@@ -7,9 +7,12 @@
     .controller('BlogCtrl', BlogCtrl);
 
   /*@ngInject*/
-    function BlogCtrl($state, postsResolved, Posts) {
+    function BlogCtrl($state, Posts) {
      var Blog = this;
-      Blog.posts = postsResolved;
+
+      Blog.posts = Posts.getPool();
+
+      console.log();
 
       //public functions
       Blog.getPost = getPost;
