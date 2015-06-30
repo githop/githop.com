@@ -20,7 +20,7 @@
   function Posts($http, $q, BlogPost, API_URL) {
 
     var articleManager = {};
-    articleManager._pool = {};
+    articleManager._pool = [];
     //toggled after loadAll
     articleManager.loaded = false;
 
@@ -29,20 +29,22 @@
     };
 
     articleManager._retrieveInstance = function(articleId, data) {
-      var instance = this._pool[articleId];
-      
+      var instance = this._search(articleId);
+
       if ( instance ) {
         instance.setData();
       } else {
         instance = new BlogPost(data);
-        this._pool[articleId] = instance;
+        this._pool.push( instance );
       }
 
       return instance;
     };
 
     articleManager._search = function(articleId) {
-      return this._pool[articleId];
+      var hit = _.find(this._pool, function(article){
+        return article.id == articleId;
+      });
     };
 
     articleManager._load = function(articleId, dfd) {
