@@ -12,17 +12,8 @@
 
       Blog.posts = Posts.getPool();
 
-      console.log();
-
       //public functions
-      Blog.getPost = getPost;
       Blog.goToPost = goToPost;
-
-      function getPost() {
-        Posts.getArticle(id).then(function(post){
-          console.log(post);
-        });
-      }
 
       function goToPost(id) {
         $state.go('home.blog.post', {postId: id});

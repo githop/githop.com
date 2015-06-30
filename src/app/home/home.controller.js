@@ -7,12 +7,9 @@
   function HomeCtrl($mdDialog, User) {
     var Home = this;
 
-    Home.howdy = 'hello world';
-
     Home.loginModal = loginModal;
     Home.logOut = logOut;
-    Home.currentUser = User.init();
-
+    Home.currentUser = User.currentUser();
 
     function loginModal(ev) {
       $mdDialog.show({
