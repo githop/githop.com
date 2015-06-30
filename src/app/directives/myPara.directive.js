@@ -13,7 +13,7 @@
         restrict: 'A',
         template: [
         '<div ng-repeat="para in header.paragraphs.slice(start -1, end)">',
-          '<p>{{para.attributes.body}}</p>',
+          '<p ng-bind-html="para.attributes.body"></p>',
         '</div>'].join(''),
         scope: {
           header: '=',
