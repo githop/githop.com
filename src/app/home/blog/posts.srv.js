@@ -1,16 +1,4 @@
-/**
- *
- * Created by githop on 6/23/15.
- */
-// loadAll will get entire blog roll then load up object pool with post objects.
-// intent is to call this method in the router state and pass data to ctrl via resolve.
-// SHOW page for blog will use child state, and use article manager to pass data via resolve as well.
-// the above should be super fast because all data was fetched upon init blog load and cached.
-//
-//edge cases that need to be handled:
-// -add method to serialize single response for blog post; e.g. articles/1
-// --method should fetch resource, and serialize the response into a BlogPost obj and add it to the _pool
-// --logic should prob reside on the BlogPost class
+
 (function () {
   'use strict';
   angular.module('home')
