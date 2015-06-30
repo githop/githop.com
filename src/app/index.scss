@@ -13,6 +13,12 @@ body, #body {
   position: fixed;
   z-index: 3;
   top: 0;
+
+  .btn-small {
+    md-button {
+      width: 90%;
+    }
+  }
 }
 
 md-card.splash-card {

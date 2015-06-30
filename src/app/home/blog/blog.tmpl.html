@@ -5,9 +5,9 @@
         <div class="header-bg"><img ng-src="{{post.imgs[0].attributes.href}}"></div>
         <md-card-content>
 
-          <div layout="row" layout-align="space-between center">
-            <h1>{{post.title}}</h1>
-            <p>{{post.datePosted | date}}, by: {{post.author[0].attributes.username}}</p>
+          <div layout="row" layout-sm='column' layout-align="space-between center">
+            <h2>{{post.title}}</h2>
+            <p>{{post.datePosted | date}} by: {{post.author[0].attributes.username}}</p>
           </div>
 
 
