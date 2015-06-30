@@ -8,7 +8,7 @@
 
     var articleManager = {};
     //private properties
-    articleManager._pool = [];
+    var _pool = [];
 
     //public methods binding
     articleManager.getPool = getPool;
@@ -18,7 +18,7 @@
 
     //private methods
     var _search = function (articleId) {
-      return _.find(articleManager._pool, {'id': articleId});
+      return _.find(_pool, {'id': articleId});
     };
 
     var _retrieveInstance = function (articleId, data, afterInit) {
@@ -32,7 +32,7 @@
         } else {
           instance = new BlogPost(data);
         }
-        articleManager._pool.push(instance);
+        _pool.push(instance);
       }
       return instance;
     };
@@ -50,7 +50,7 @@
     };
 
     var _init = function () {
-      if (articleManager._pool.length == 0) {
+      if (_pool.length == 0) {
         articleManager.loadAll();
       }
     };
@@ -58,9 +58,8 @@
     _init();
 
     //public methods
-
     function getPool() {
-      return this._pool;
+      return _pool;
     }
 
     function getArticle(articleId) {

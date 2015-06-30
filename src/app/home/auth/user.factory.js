@@ -13,7 +13,7 @@
 
       var User = {};
       //private properties
-      User._user = undefined;
+      var _user = undefined;
 
       //public methods binding
       User.login = login;
@@ -28,8 +28,8 @@
       };
 
       var _setCurrentUser = function(token) {
-        User._user = _parseJwt(token);
-        return User._user;
+        _user = _parseJwt(token);
+        return _user;
       };
 
       var _init = function() {
@@ -60,11 +60,11 @@
 
       function logout() {
         AuthToken.setToken();
-        return User._user = undefined;
+        return _user = undefined;
       }
 
       function currentUser() {
-        return User._user;
+        return _user;
       }
 
       return User;
