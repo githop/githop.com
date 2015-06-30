@@ -8,3 +8,5 @@ dist/
 gulp
 e2e
 dist.zip
+.DS_Store
+prep-deploy.sh
