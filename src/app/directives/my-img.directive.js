@@ -10,22 +10,38 @@
     .directive('myImg', myImg);
 
     function myImg() {
-      var _driveUrl = 'https://docs.google.com/uc';
-        //'id=ID_HERE&export=download';
       return {
-        restrict: 'A',
+        restrict: 'EA',
+        template: '<img ng-src="{{ctrl.ngSrc}}" alt="{{ctrl.title}}">',
         scope: {
           driveId: '=',
-          ngSrc: '='
+          ngSrc: '=',
+          title: '='
         },
         controller: /*ngInject*/ imgController,
-        controllerAs: 'imgCtrl',
+        controllerAs: 'ctrl',
         bindToController: true
       };
 
       function imgController($http) {
-        var imgCtrl = this;
-        console.log("hey oh", this.ngSrc);
+        var ctrl = this;
+        var _driveUrl = 'https://www.googleapis.com/drive/v2/files/',
+            _spinnerPath = 'assets/images/spinner.svg',
+            _APIKey = 'AIzaSyB_Gu6uDOCsvVNawWd7WT05F7pqMAnE2O4';
+
+        ctrl.ngSrc = _spinnerPath;
+
+        _driveUrl = _driveUrl + ctrl.driveId;
+
+        $http.get(_driveUrl, {
+          params: {
+            fields: 'webContentLink',
+            key: _APIKey
+          }
+        }).then(function(resp){
+          console.log(resp);
+          ctrl.ngSrc = resp.data.webContentLink;
+        });
 
 
       }

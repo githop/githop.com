@@ -2,7 +2,7 @@
   <md-content>
     <div ng-repeat="post in Blog.posts | orderBy:'-datePosted' track by post.id" ng-click="Blog.goToPost(post.id)">
       <md-card class="blog-card clickable">
-        <div class="header-bg"><img my-img ng-src="post.imgs[0].attributes.href" drive-id="post.imgs[0].href"></div>
+        <div class="header-bg"><my-img ng-src="post.imgs[0].attributes.href" drive-id="post.imgs[0].attributes.href"></my-img></div>
         <md-card-content>
 
           <div layout="row" layout-sm="column" layout-align="space-between center">
