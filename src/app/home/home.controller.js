@@ -11,6 +11,8 @@
     Home.logOut = logOut;
     Home.currentUser = User.currentUser();
 
+    Home.url = {name: 'test test test'};
+
     function loginModal(ev) {
       $mdDialog.show({
         controller: dialogController,
