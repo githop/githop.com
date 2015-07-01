@@ -40,8 +40,8 @@
     }
 
     function logOut() {
-      User.logout();
-      Home.currentUser = User.user;
+
+      Home.currentUser = User.logout();
     }
 
   }
