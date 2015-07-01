@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
   angular.module('home')
     .factory('Posts', Posts);
@@ -17,11 +17,11 @@
     articleManager.setArticle = setArticle;
 
     //private methods
-    var _search = function (articleId) {
+    var _search = function(articleId) {
       return _.find(_pool, {'id': articleId});
     };
 
-    var _retrieveInstance = function (articleId, data, afterInit) {
+    var _retrieveInstance = function(articleId, data, afterInit) {
       var instance = _search(articleId);
 
       if (instance) {
@@ -37,19 +37,19 @@
       return instance;
     };
 
-    var _load = function (articleId, dfd) {
+    var _load = function(articleId, dfd) {
 
       $http.get(API_URL + '/articles/' + articleId)
-        .success(function (articleData) {
-          var article = _retrieveInstance(articleData.data.id, articleData, true);
+        .success(function(resp) {
+          var article = _retrieveInstance(resp.data.id, resp, true);
           dfd.resolve(article);
         })
-        .error(function () {
+        .error(function() {
           dfd.reject();
         });
     };
 
-    var _init = function () {
+    var _init = function() {
       if (_pool.length == 0) {
         articleManager.loadAll();
       }
@@ -79,47 +79,47 @@
       var dfd = $q.defer();
 
       $http.get(API_URL + '/articles')
-        .success(function (articlesResp) {
+        .success(function(articlesResp) {
           var posts = [];
 
-          var articles = _.filter(articlesResp.data, function (resource) {
+          var articles = _.filter(articlesResp.data, function(resource) {
             return resource.type === 'articles';
           });
 
-          var imgs = _.filter(articlesResp.included, function (resource) {
+          var imgs = _.filter(articlesResp.included, function(resource) {
             return resource.type === 'imgs';
           });
 
-          var paragraphs = _.filter(articlesResp.included, function (resource) {
+          var paragraphs = _.filter(articlesResp.included, function(resource) {
             return resource.type === 'paragraphs';
           });
 
-          var headers = _.filter(articlesResp.included, function (resource) {
+          var headers = _.filter(articlesResp.included, function(resource) {
             return resource.type === 'headers';
           });
 
-          var authors = _.filter(articlesResp.included, function (resource) {
+          var authors = _.filter(articlesResp.included, function(resource) {
             return resource.type === 'users'
           });
 
-          _.each(articles, function (articleObj) {
+          _.each(articles, function(articleObj) {
             var title = articleObj.attributes.title;
-            var datePosted = articleObj.attributes.posted_on;
+            var datePosted = articleObj.attributes.postedOn;
 
-            var author = _.filter(authors, function (author) {
+            var author = _.filter(authors, function(author) {
               return author.id === articleObj.relationships.user.data.id
             });
 
-            var ownHeaders = _.filter(headers, function (header) {
+            var ownHeaders = _.filter(headers, function(header) {
               return header.relationships.article.data.id === articleObj.id;
             });
 
-            var ownImgs = _.filter(imgs, function (img) {
+            var ownImgs = _.filter(imgs, function(img) {
               return img.relationships.article.data.id === articleObj.id;
             });
 
-            _.each(ownHeaders, function (header) {
-              var headerOwnParas = _.filter(paragraphs, function (para) {
+            _.each(ownHeaders, function(header) {
+              var headerOwnParas = _.filter(paragraphs, function(para) {
                 return para.relationships.header.data.id === header.id;
               });
               header.paragraphs = headerOwnParas;
@@ -139,7 +139,7 @@
 
           dfd.resolve(posts);
         })
-        .error(function () {
+        .error(function() {
           dfd.reject();
         });
 
@@ -153,14 +153,9 @@
       } else {
         article = _retrieveInstance(articleData);
       }
-
       return article;
     }
-
-
     return articleManager;
   }
-
-
 })();
 

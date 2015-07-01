@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   angular.module('home')
@@ -19,8 +19,8 @@
         parent: angular.element(document.body),
         targetEv: ev
       })
-        .then(function(u){
-          User.login(u.email, u.password).then(function(user){
+        .then(function(u) {
+          User.login(u.email, u.password).then(function(user) {
             Home.currentUser = user;
           });
         });
@@ -28,7 +28,7 @@
       /*ngInject*/
       function dialogController($mdDialog) {
         var dialog = this;
-        dialog.test = "hello world";
+        dialog.test = 'hello world';
 
         dialog.login = function(email, password) {
           $mdDialog.hide({email: email, password: password});

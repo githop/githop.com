@@ -3,13 +3,13 @@
  * Created by githop on 5/30/15.
  */
 
-(function () {
+(function() {
   'use strict';
   angular.module('home', ['githopwww'])
-    .config(function($stateProvider){
+    .config(function($stateProvider) {
       $stateProvider
         .state('home.main', {
-          url:'/',
+          url: '/',
           templateUrl: 'app/home/home.tmpl.html'
         })
         .state('home.resume', {
@@ -18,7 +18,7 @@
           controller: 'ResumeCtrl as Res'
         })
         .state('home.blog', {
-          url:'/blog',
+          url: '/blog',
           templateUrl: 'app/home/blog/blog.tmpl.html',
           controller: 'BlogCtrl as Blog'
         })

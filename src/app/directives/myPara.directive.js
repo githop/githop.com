@@ -2,24 +2,24 @@
  * Created by githop on 6/26/15.
  */
 
-(function () {
+(function() {
   'use strict';
 
   angular.module('githopwww')
     .directive('myPara', myPara);
 
-    function myPara() {
-      return {
-        restrict: 'A',
-        template: [
+  function myPara() {
+    return {
+      restrict: 'A',
+      template: [
         '<div ng-repeat="para in header.paragraphs.slice(start -1, end)">',
-          '<p ng-bind-html="para.attributes.body"></p>',
+        '<p ng-bind-html="para.attributes.body"></p>',
         '</div>'].join(''),
-        scope: {
-          header: '=',
-          start: '@',
-          end: '@'
-        }
+      scope: {
+        header: '=',
+        start: '@',
+        end: '@'
       }
     }
+  }
 })();

@@ -27,12 +27,12 @@ angular.module('githopwww', [
         views: {
           '@': {
             templateUrl: 'app/home/layout/shell.tmpl.html',
-            controller:'HomeCtrl as Home'
+            controller: 'HomeCtrl as Home'
           },
           'nav@home': {
-            templateUrl:'app/home/layout/nav.tmpl.html'
+            templateUrl: 'app/home/layout/nav.tmpl.html'
           },
-          'body@home' :  {
+          'body@home':  {
             templateUrl: 'app/home/layout/body.tmpl.html'
           }
         }
