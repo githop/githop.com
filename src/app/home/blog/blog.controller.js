@@ -1,7 +1,7 @@
 /**
  * Created by githop on 6/23/15.
  */
-(function () {
+(function() {
   'use strict';
   angular.module('home')
     .controller('BlogCtrl', BlogCtrl);
