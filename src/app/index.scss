@@ -97,16 +97,25 @@ and (min-resolution: 192dpi) {
 @media only screen
   and (min-device-width: 768px)
   and (max-device-width: 1024px ) {
+  #body {
+    height: 480px;
+  }
   md-card.splash-card {
-    position: fixed;
+    position: relative !important;
     text-align: center;
-    top: 3em;
-    left: 33%;
-    margin: 0 auto;
-    width: 33%;
+    //margin-top: 130px;
+    top: 130px !important;
+    left: 20px !important;
+    //height: 380px;
+    width: 66%;
     background-color: #fff;
-    z-index: 10;
-  };
+    img {
+      width: 68px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+  }
 }
 
 
@@ -116,15 +125,20 @@ and (min-resolution: 192dpi) {
   and (min-device-width: 320px)
   and (max-device-width: 568px){
   md-card.splash-card {
-    position: fixed;
+    position: static;
     text-align: center;
-    top: 7em;
-    left: 19%;
-    margin: 0 auto;
+    margin-top: 130px;
+    height: 240px;
     width: 66%;
     background-color: #fff;
-    z-index: 10;
-  };
+    z-index: 2;
+    img {
+      width: 68px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+  }
 }
 
 //md-icons stuff
