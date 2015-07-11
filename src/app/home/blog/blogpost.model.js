@@ -21,8 +21,11 @@
       }
 
       var title = articleData.data.attributes.title;
-
       var datePosted = articleData.data.attributes.postedOn;
+      var sentimentRank = articleData.attributes.sentimentRank;
+      var positiveWc = articleData.attributes.positiveWc;
+      var negativeWc = articleData.attributes.negativeWc;
+      var neutralWc = articleData.attributes.neutralWc;
 
       var author = _.filter(articleData.included, function(resource) {
         return resource.type === 'users'
@@ -50,7 +53,11 @@
       var post = {
         'id': articleData.data.id, 'title': title,
         'author': author, 'datePosted': datePosted,
-        'headers': headers, 'imgs': imgs
+        'headers': headers, 'imgs': imgs,
+        'sentimentRank': sentimentRank,
+        'positiveWc': positiveWc,
+        'negativeWc': negativeWc,
+        'neutralWc': neutralWc
       };
 
       angular.extend(this, post);

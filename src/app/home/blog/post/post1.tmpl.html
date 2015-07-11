@@ -2,7 +2,14 @@
   <md-content>
     <md-card class="blog-card">
       <img ng-src="{{Post.post.imgs[0].attributes.href}}" alt="{{Post.post.imgs[0].attributes.title}}"/>
-      <md-card-content>
+      <md-card-content class="analysis">
+
+        <my-rank-card
+            sentiment-rank="{{Post.post.sentimentRank}}"
+            positive-wc="{{Post.post.positiveWc}}"
+            negative-wc="{{Post.post.negativeWc}}"
+            neutral-wc="{{Post.post.neutralWc}}"></my-rank-card>
+
         <h1>{{Post.post.title}}</h1>
         <p>Posted on: {{Post.post.datePosted | date}}, By:{{Post.post.author[0].attributes.username}}</p>
 

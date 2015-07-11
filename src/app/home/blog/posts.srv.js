@@ -105,6 +105,10 @@
           _.each(articles, function(articleObj) {
             var title = articleObj.attributes.title;
             var datePosted = articleObj.attributes.postedOn;
+            var sentimentRank = articleObj.attributes.sentimentRank;
+            var positiveWc = articleObj.attributes.positiveWc;
+            var negativeWc = articleObj.attributes.negativeWc;
+            var neutralWc = articleObj.attributes.neutralWc;
 
             var author = _.filter(authors, function(author) {
               return author.id === articleObj.relationships.user.data.id
@@ -130,6 +134,10 @@
               'title': title,
               'author': author,
               'datePosted': datePosted,
+              'sentimentRank': sentimentRank,
+              'positiveWc': positiveWc,
+              'negativeWc': negativeWc,
+              'neutralWc': neutralWc,
               'headers': ownHeaders,
               'imgs': ownImgs
             };
