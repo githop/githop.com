@@ -22,10 +22,10 @@
 
       var title = articleData.data.attributes.title;
       var datePosted = articleData.data.attributes.postedOn;
-      var sentimentRank = articleData.attributes.sentimentRank;
-      var positiveWc = articleData.attributes.positiveWc;
-      var negativeWc = articleData.attributes.negativeWc;
-      var neutralWc = articleData.attributes.neutralWc;
+      var sentimentRank = articleData.data.attributes.sentimentRank;
+      var positiveWc = articleData.data.attributes.positiveWc;
+      var negativeWc = articleData.data.attributes.negativeWc;
+      var neutralWc = articleData.data.attributes.neutralWc;
 
       var author = _.filter(articleData.included, function(resource) {
         return resource.type === 'users'

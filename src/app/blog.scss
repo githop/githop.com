@@ -13,6 +13,7 @@
   position: relative;
   float: right;
   top: -83px;
+  font-size: 12px;
 }
 div.header-bg {
   display: block;
@@ -53,6 +54,21 @@ md-card.blog-card {
 @media only screen
 and (min-device-width: 320px)
 and (max-device-width: 568px) {
+
+  h1 {
+    font-size: 1.3em;
+  }
+  .rankings {
+    background-color: #f1f1f1;
+    width: 40%;
+    position: relative;
+    float: right;
+    top: -83px;
+    .md-button {
+      font-size: 9px;
+    }
+  }
+
   md-card.blog-card {
     width: 98%;
   }
