@@ -4,12 +4,45 @@
   angular.module('home')
     .controller('HomeCtrl', HomeCtrl);
   /*ngInject*/
-  function HomeCtrl($mdDialog, User) {
+  function HomeCtrl($mdDialog, User, Analysis) {
     var Home = this;
 
+    Home.analyzeWords = analyzeWords;
     Home.loginModal = loginModal;
     Home.logOut = logOut;
     Home.currentUser = User.currentUser();
+
+    var _resultsModal = function(results) {
+      var _resultsController = /*ngInject*/ function($mdDialog, analysis) {
+        var results = this;
+        results.rank = analysis.rank;
+        results.words = analysis.words;
+        //positive, negative,  neutral
+        results.colors = ['#3F51B5', '#F44336', '#f1f1f1'];
+        results.chartData = analysis.chartData;
+        results.posWc = analysis.posWc;
+        results.negWc = analysis.negWc;
+        results.neuWc = analysis.neuWc;
+      };
+
+      $mdDialog.show({
+        controller: _resultsController,
+        controllerAs: 'results',
+        templateUrl: 'results.tmpl.html',
+        parent: angular.element(document.body),
+        locals: {analysis: results}
+      })
+        .then(function() {
+          console.log('closed');
+        });
+    };
+
+    function analyzeWords(words) {
+      Analysis.postWords(words).then(function(results) {
+        //console.log(results.wordCounts);
+        _resultsModal(results)
+      });
+    }
 
     function loginModal(ev) {
       $mdDialog.show({
@@ -40,7 +73,6 @@
     }
 
     function logOut() {
-
       Home.currentUser = User.logout();
     }
 

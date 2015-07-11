@@ -9,12 +9,14 @@
   angular.module('home')
     .controller('PostCtrl', PostCtrl);
 
-  function PostCtrl($stateParams, Posts) {
+  function PostCtrl($stateParams, $mdDialog, Posts, Analysis) {
     var Post = this;
 
     Posts.getArticle($stateParams.postId).then(function(post) {
       Post.post = post;
     });
+
   }
+
 })();
 

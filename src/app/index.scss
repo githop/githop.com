@@ -51,6 +51,48 @@ md-card.splash-card {
 
 }
 
+.analysis-results {
+
+  //  .md-button.pos {
+  //      background-color: green;
+  //    }
+  //
+  //  .md-button.neg {
+  //    background-color: red;
+  //  }
+  //
+  //  .md-button.neu {
+  //    background-color: blue;
+  //  }
+  //}
+
+  .md-button.md-fab {
+    font-size: 7px;
+    line-height: 0;
+    min-width: 0;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+  }
+
+  .md-button.md-fab.pos {
+    background-color: #3F51B5;
+  }
+
+  .md-button.md-fab.neg {
+    background-color: #F44336
+  }
+
+  .md-button.md-fab.neu {
+    color: black;
+    background-color: #f1f1f1
+  }
+
+
+
+
+}
+
 footer {
   md-toolbar {
     position: fixed;
