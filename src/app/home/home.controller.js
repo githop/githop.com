@@ -43,9 +43,11 @@
     };
 
     function analyzeWords(words) {
-      Analysis.postWords(words).then(function(results) {
-        _resultsModal(results)
-      });
+      if (words) {
+        Analysis.postWords(words).then(function(results) {
+          _resultsModal(results)
+        });
+      };
     }
 
     function loginModal(ev) {
