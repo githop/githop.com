@@ -65,7 +65,7 @@
     </md-toolbar>
     <md-dialog-content>
       <div ng-if="results.words.length">
-        <div class="" layout="row" layout-padding layout-align="space-around center">
+        <div class="" layout="row" layout-padding layout-align="space-around start">
           <div class="donut-wrapper">
             <h4>Sentiment Score: {{results.rank}}</h4>
             Word Counts:
@@ -97,7 +97,8 @@
         </div>
       </div>
       <div ng-if="!results.words.length">
-        <h2>No luck, some other words</h2>
+        <h2>No luck, try some other words</h2>
+        <p>I enjoy posting news articles into here...</p>
       </div>
     </md-dialog-content>
   </md-dialog>
