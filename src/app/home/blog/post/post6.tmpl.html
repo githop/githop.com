@@ -11,13 +11,18 @@
             neutral-wc="{{Post.post.neutralWc}}"></my-rank-card>
 
         <h1>{{Post.post.title}}</h1>
+
         <p>Posted on: {{Post.post.datePosted | date}}, By:{{Post.post.author[0].attributes.username}}</p>
 
-        <md-input-container>
-          <label>Analyze Words</label>
-          <textarea ng-model="words"></textarea>
-        </md-input-container>
-        <md-button ng-click="Home.analyzeWords(words)">submit</md-button>
+        <md-card>
+          <md-card-content>
+            <md-input-container>
+              <label>Analyze Words</label>
+              <textarea ng-model="words"></textarea>
+            </md-input-container>
+            <md-button ng-click="Home.analyzeWords(words)">submit</md-button>
+          </md-card-content>
+        </md-card>
 
       </md-card-content>
     </md-card>
@@ -25,34 +30,49 @@
 </div>
 
 <script type="text/ng-template" id="results.tmpl.html">
-  <md-dialog>
+  <md-dialog class="analysis-results">
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h4>results</h4>
+        <span flex></span>
+        <md-button ng-click="results.close()">close</md-button>
       </div>
     </md-toolbar>
     <md-dialog-content>
-      <div class="analysis-results" layout="column">
-        <h4>Sentiment Score: {{results.rank}}</h4>
-        <section layout="row" layout-align="center center">
-          <div layout="column" layout-align="center center">
-            {{results.posWc}}
-            <md-button class="md-fab pos">positive</md-button>
+      <div ng-if="results.words.length">
+        <div class="" layout="row" layout-padding layout-align="space-around center">
+          <div class="donut-wrapper">
+            <h4>Sentiment Score: {{results.rank}}</h4>
+            Word Counts:
+            <section layout="row" layout-align="center center">
+              <div layout="column" layout-align="center center" ng-if="results.posWc > 0">
+                {{results.posWc}}
+                <md-button class="md-fab pos">positive</md-button>
+              </div>
+              <div layout="column" layout-align="center center" ng-if="results.negWc > 0">
+                {{results.negWc}}
+                <md-button class="md-fab neg">negative</md-button>
+              </div>
+              <div layout="column" layout-align="center center" ng-if="results.neuWc > 0">
+                {{results.neuWc}}
+                <md-button class="md-fab neu">neutral</md-button>
+              </div>
+            </section>
+            <donut ng-model="results.chartData" width="200" height="200" radius="0" colours="results.colors"
+                   property="'value'"></donut>
           </div>
-          <div layout="column" layout-align="center center">
-            {{results.negWc}}
-            <md-button class="md-fab neg">negative</md-button>
+          <md-divider></md-divider>
+          <div layout="column" layout-align="space-between" flex="40">
+            <h4>Word | Sentiment</h4>
+            <md-divider></md-divider>
+            <div ng-repeat="word in results.words" layout="row" layout-align="space-between start">
+              <span>{{word.word}}</span><span>{{word.sentiment | sentiment}}</span>
+            </div>
           </div>
-          <div layout="column" layout-align="center center">
-            {{results.neuWc}}
-            <md-button class="md-fab neu">neutral</md-button>
-          </div>
-        </section>
-        <donut ng-model="results.chartData" width="200" height="200" radius="0" colours="results.colors" property="'value'"></donut>
-        <md-divider></md-divider>
-        <div ng-repeat="word in results.words">
-          <span>{{word.word}} {{word.sentiment | sentiment}}</span>
         </div>
+      </div>
+      <div ng-if="!results.words.length">
+        <h2>No luck, some other words</h2>
       </div>
     </md-dialog-content>
   </md-dialog>

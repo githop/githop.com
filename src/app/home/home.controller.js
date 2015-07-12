@@ -17,12 +17,17 @@
         var results = this;
         results.rank = analysis.rank;
         results.words = analysis.words;
+
         //positive, negative,  neutral
         results.colors = ['#3F51B5', '#F44336', '#f1f1f1'];
         results.chartData = analysis.chartData;
         results.posWc = analysis.posWc;
         results.negWc = analysis.negWc;
         results.neuWc = analysis.neuWc;
+
+        results.close = function() {
+          $mdDialog.hide();
+        }
       };
 
       $mdDialog.show({
@@ -39,7 +44,6 @@
 
     function analyzeWords(words) {
       Analysis.postWords(words).then(function(results) {
-        //console.log(results.wordCounts);
         _resultsModal(results)
       });
     }

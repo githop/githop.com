@@ -12,7 +12,6 @@
     Analysis.postWords = postWords;
 
     var _formatChartData = function(wc) {
-      console.log(wc);
       var chartData = [
         {name: 'positive', value: wc.positive},
         {name: 'negative', value: wc.negative},
@@ -35,7 +34,6 @@
           negWc: resp.data.wordCounts.negative,
           neuWc: resp.data.wordCounts.neutral
         };
-        console.log('formatted result', result);
         dfd.resolve(result);
       }, function(e) {
         dfd.reject(e)

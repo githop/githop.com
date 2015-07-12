@@ -52,19 +52,10 @@ md-card.splash-card {
 }
 
 .analysis-results {
-
-  //  .md-button.pos {
-  //      background-color: green;
-  //    }
-  //
-  //  .md-button.neg {
-  //    background-color: red;
-  //  }
-  //
-  //  .md-button.neu {
-  //    background-color: blue;
-  //  }
-  //}
+  width: 80%;
+  md-toolbar {
+    background-color: #81bb10;;
+  }
 
   .md-button.md-fab {
     font-size: 7px;
