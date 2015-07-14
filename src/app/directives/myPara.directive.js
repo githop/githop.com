@@ -4,7 +4,6 @@
 
 (function() {
   'use strict';
-
   angular.module('githopwww')
     .directive('myPara', myPara);
 
