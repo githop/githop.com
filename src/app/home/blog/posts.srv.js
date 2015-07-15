@@ -4,7 +4,7 @@
     .factory('Posts', Posts);
 
   /*@ngInject*/
-  function Posts($http, $q, BlogPost, API_URL) {
+  function Posts($http, $q, BlogPost, Para, API_URL) {
 
     var articleManager = {};
     //private properties
@@ -125,6 +125,9 @@
             _.each(ownHeaders, function(header) {
               var headerOwnParas = _.filter(paragraphs, function(para) {
                 return para.relationships.header.data.id === header.id;
+              }).map(function(para) {
+                //console.log('chain test', para);
+                return new Para(para);
               });
               header.paragraphs = headerOwnParas;
             });

@@ -8,7 +8,7 @@
 
   angular.module('home')
     .controller('PostCtrl', PostCtrl);
-
+  //ngInject
   function PostCtrl($stateParams, Posts) {
     var Post = this;
 

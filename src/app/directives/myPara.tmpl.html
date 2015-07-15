@@ -1,0 +1,6 @@
+<div ng-repeat="para in ctrl.header.paragraphs.slice(start -1, end)"
+     ng-mouseenter="ctrl.adminShow()"
+     ng-mouseleave="ctrl.adminHide()">
+  <a href="" ng-click="para.edit()" ng-if="ctrl.canEdit">edit paragraph</a>
+  <p ng-bind-html="para.attributes.body"></p>
+</div>

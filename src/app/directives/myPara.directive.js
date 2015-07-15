@@ -6,19 +6,33 @@
   'use strict';
   angular.module('githopwww')
     .directive('myPara', myPara);
-
+  //ngInject
   function myPara() {
+
+    var _paraCtrl = function(User) {
+      var ctrl = this;
+
+      ctrl.adminShow = function() {
+        if (User.currentUser()) {
+          return ctrl.canEdit = true
+        }
+      };
+      ctrl.adminHide = function() {
+        return ctrl.canEdit = false;
+      }
+    };
+
     return {
       restrict: 'A',
-      template: [
-        '<div ng-repeat="para in header.paragraphs.slice(start -1, end)">',
-        '<p ng-bind-html="para.attributes.body"></p>',
-        '</div>'].join(''),
+      templateUrl: 'app/directives/myPara.tmpl.html',
       scope: {
         header: '=',
         start: '@',
         end: '@'
-      }
+      },
+      controller:/*ngInject*/_paraCtrl,
+      controllerAs: 'ctrl',
+      bindToController: true
     }
   }
 })();

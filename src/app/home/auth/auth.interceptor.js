@@ -18,8 +18,9 @@
     function addToken(config) {
       var token = AuthToken.getToken(),
         isTemplate = config.url.substr(config.url.length - 5) == '.html',
-        protectedResource = API_URL + '/articles',
-        isProtectedResource = config.url.indexOf(protectedResource) > -1,
+        articlesResource = API_URL + '/articles',
+        paragraphsResource = API_URL + '/articles',
+        isProtectedResource = config.url.indexOf(articlesResource) > -1 || config.url.indexOf(paragraphsResource),
         isGet = config.method === 'GET',
         isPost = config.method === 'POST',
         isPut = config.method === 'PUT',

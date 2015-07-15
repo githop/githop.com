@@ -7,7 +7,8 @@
   angular.module('home')
     .factory('BlogPost', BlogPost);
 
-  function BlogPost() {
+  /*ngInject*/
+  function BlogPost(Para) {
 
     var Post = function(article, afterInit) {
       afterInit ? this.setData(article, afterInit) : this.setData(article);
@@ -46,6 +47,8 @@
       _.each(headers, function(header) {
         var headerOwnParas = _.filter(paragraphs, function(para) {
           return para.relationships.header.data.id === header.id;
+        }).map(function(para) {
+          return new Para(para);
         });
         header.paragraphs = headerOwnParas;
       });
@@ -61,6 +64,10 @@
       };
 
       angular.extend(this, post);
+    };
+
+    Post.prototype.logTest = function() {
+      console.log('post model test');
     };
 
     return Post;
