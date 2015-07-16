@@ -9,6 +9,12 @@ body, #body {
   background-color: #81bb10;
 }
 
+.pre-load {
+  md-progress-linear {
+    padding-bottom: 10px;
+  }
+}
+
 #my-nav {
   position: fixed;
   z-index: 3;

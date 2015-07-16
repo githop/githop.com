@@ -11,7 +11,6 @@
     var Blog = this;
 
     Blog.posts = Posts.getPool();
-
     //public functions
     Blog.goToPost = goToPost;
 
