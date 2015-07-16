@@ -1,4 +1,4 @@
-<div ng-repeat="para in ctrl.header.paragraphs.slice(ctrl.start -1, ctrl.end)"
+<div ng-repeat="para in ctrl.header.paragraphs.slice(ctrl.start -1, ctrl.end) | orderBy: 'id' track by para.id"
      ng-mouseenter="ctrl.adminShow()"
      ng-mouseleave="ctrl.adminHide()">
   <a href="" ng-click="para.edit()" ng-if="ctrl.canEdit">edit paragraph</a>
