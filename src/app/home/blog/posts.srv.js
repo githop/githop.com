@@ -82,26 +82,32 @@
         .success(function(articlesResp) {
           var posts = [];
 
-          var articles = _.filter(articlesResp.data, function(resource) {
-            return resource.type === 'articles';
-          });
+          //var things = _.chain(articlesResp)
+          //.push(
+          //  _.filter(articlesResp.data, function(resource) {
+          //  return resource.type === 'articles';
+          //})
+          //).push(
+          //  _.filter(articlesResp.included, function(resource) {
+          //    return resource.type === 'imgs';
+          //  })
+          //).push(
+          //  _.filter(articlesResp.included, function(resource) {
+          //    return resource.type === 'paragraphs';
+          //  })
+          //).push(
+          //  _.filter(articlesResp.included, function(resource) {
+          //    return resource.type === 'headers';
+          //  })
+          //).push(
+          //  _.filter(articlesResp.included, function(resource) {
+          //    return resource.type === 'users'
+          //  })
+          //).value();
 
-          var imgs = _.filter(articlesResp.included, function(resource) {
-            return resource.type === 'imgs';
-          });
+          console.log("Fn Things: ", articlesResp);
 
-          var paragraphs = _.filter(articlesResp.included, function(resource) {
-            return resource.type === 'paragraphs';
-          });
-
-          var headers = _.filter(articlesResp.included, function(resource) {
-            return resource.type === 'headers';
-          });
-
-          var authors = _.filter(articlesResp.included, function(resource) {
-            return resource.type === 'users'
-          });
-
+          var articles;
           _.each(articles, function(articleObj) {
             var title = articleObj.attributes.title;
             var datePosted = articleObj.attributes.postedOn;
