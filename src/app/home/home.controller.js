@@ -13,39 +13,39 @@
     Home.currentUser = User.currentUser();
 
     function analyzeWords(words) {
+
+      var _resultsController = /*ngInject*/function($mdDialog, analysis) {
+        var results = this;
+        results.rank = analysis.rank;
+        results.words = analysis.words;
+
+        //positive, negative,  neutral
+        results.colors = ['#3F51B5', '#F44336', '#f1f1f1'];
+        results.chartData = analysis.chartData;
+        results.posWc = analysis.posWc;
+        results.negWc = analysis.negWc;
+        results.neuWc = analysis.neuWc;
+
+        results.close = function() {
+          $mdDialog.hide();
+        }
+      };
+
       var _resultsModal = function(results) {
-        var _resultsController = /*ngInject*/ function($mdDialog, analysis) {
-          var results = this;
-          results.rank = analysis.rank;
-          results.words = analysis.words;
-
-          //positive, negative,  neutral
-          results.colors = ['#3F51B5', '#F44336', '#f1f1f1'];
-          results.chartData = analysis.chartData;
-          results.posWc = analysis.posWc;
-          results.negWc = analysis.negWc;
-          results.neuWc = analysis.neuWc;
-
-          results.close = function() {
-            $mdDialog.hide();
-          }
-        };
-
         $mdDialog.show({
           controller: _resultsController,
           controllerAs: 'results',
           templateUrl: 'results.tmpl.html',
           parent: angular.element(document.body),
           locals: {analysis: results}
-        })
-          .then(function() {
-            console.log('closed');
-          });
+        }).then(function() {
+          console.log('closed');
+        });
       };
 
       if (words) {
         Analysis.postWords(words).then(function(results) {
-          _resultsModal(results)
+          _resultsModal(results);
         });
       }
     }
