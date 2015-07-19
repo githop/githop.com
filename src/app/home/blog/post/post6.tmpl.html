@@ -5,14 +5,13 @@
       <md-card-content>
 
         <my-rank-card
-            sentiment-rank="{{Post.post.sentimentRank}}"
-            positive-wc="{{Post.post.positiveWc}}"
-            negative-wc="{{Post.post.negativeWc}}"
-            neutral-wc="{{Post.post.neutralWc}}"></my-rank-card>
+            sentiment-rank="{{Post.post.attributes.sentimentRank}}"
+            positive-wc="{{Post.post.attributes.positiveWc}}"
+            negative-wc="{{Post.post.attributes.negativeWc}}"
+            neutral-wc="{{Post.post.attributes.neutralWc}}"></my-rank-card>
 
-        <h1>{{Post.post.title}}</h1>
-
-        <p>Posted on: {{Post.post.datePosted | date}}, By:{{Post.post.author[0].attributes.username}}</p>
+        <h1>{{Post.post.attributes.title}}</h1>
+        <p>Posted on: {{Post.post.attributes.postedOn | date}}, By:{{Post.post.author.attributes.username}}</p>
 
         <md-card class="input-analysis">
           <md-card-content>
