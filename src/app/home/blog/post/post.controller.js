@@ -9,10 +9,10 @@
   angular.module('home')
     .controller('PostCtrl', PostCtrl);
   //ngInject
-  function PostCtrl($stateParams, Posts) {
+  function PostCtrl($stateParams, Resources) {
     var Post = this;
 
-    Posts.getArticle($stateParams.postId).then(function(post) {
+    Resources.getArticle($stateParams.postId).then(function(post) {
       Post.post = post;
     });
 
