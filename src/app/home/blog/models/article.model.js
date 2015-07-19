@@ -48,18 +48,11 @@
       this.headers.push(header);
     };
 
-    Model.prototype.getHeaders = function() {
-      //return array of header objects
-      return this.headers;
-    };
-
     Model.prototype.setImg = function(img) {
       this.imgs.push(img);
     };
 
-    Model.prototype.getImgs = function() {
-      //return array of img objects
-    };
+
 
     return Model;
   }

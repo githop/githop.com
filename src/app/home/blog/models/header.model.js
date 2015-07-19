@@ -29,11 +29,6 @@
       this.paragraphs.push(para);
     };
 
-    Model.prototype.getParas = function() {
-      //return array of paragraphs
-      return this.paragraphs;
-    };
-
     return Model;
   }
 })();
