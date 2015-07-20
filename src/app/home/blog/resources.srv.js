@@ -32,7 +32,7 @@
       var resource = _.find(collection, {id: id});
       if (resource) {
         return resource;
-      } else if (Type == false) {
+      } else if (Type === false) {
         collection.push(data);
         return data;
       } else {
