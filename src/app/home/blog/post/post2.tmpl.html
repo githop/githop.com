@@ -14,16 +14,16 @@
         <p>Posted on: {{Post.post.attributes.postedOn | date}}, By:{{Post.post.author.attributes.username}}</p>
 
         <h3>{{Post.post.headers[0].attributes.text}}</h3>
-        <p my-para header="Post.post.headers[0]" start="1" end="1"></p>
+        <p my-para header="Post.post.headers[0]" start="0" limit="1"></p>
 
         <h3>{{Post.post.headers[1].attributes.text}}</h3>
-        <p my-para header="Post.post.headers[1]" start="1" end="1"></p>
+        <p my-para header="Post.post.headers[1]" start="0" limit="1"></p>
 
         <h3>{{Post.post.headers[2].attributes.text}}</h3>
-        <p my-para header="Post.post.headers[2]" start="1" end="4"></p>
+        <p my-para header="Post.post.headers[2]" start="0" limit="4"></p>
 
         <h3>{{Post.post.headers[3].attributes.text}}</h3>
-        <p my-para header="Post.post.headers[3]" start="1" end="3"></p>
+        <p my-para header="Post.post.headers[3]" start="0" limit="3"></p>
 
       </md-card-content>
     </md-card>

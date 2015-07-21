@@ -10,15 +10,15 @@
   function myPara() {
 
     var _paraCtrl = function(User) {
-      var ctrl = this;
+      var c = this;
 
-      ctrl.adminShow = function() {
+      c.adminShow = function() {
         if (User.currentUser()) {
-          return ctrl.canEdit = true
+          return c.canEdit = true
         }
       };
-      ctrl.adminHide = function() {
-        return ctrl.canEdit = false;
+      c.adminHide = function() {
+        return c.canEdit = false;
       }
     };
 
@@ -27,11 +27,11 @@
       templateUrl: 'app/directives/myPara.tmpl.html',
       scope: {
         header: '=',
-        start: '@',
-        end: '@'
+        limit: '@',
+        start: '@'
       },
       controller:/*ngInject*/_paraCtrl,
-      controllerAs: 'ctrl',
+      controllerAs: 'c',
       bindToController: true
     }
   }
