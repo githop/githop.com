@@ -45,11 +45,17 @@
     };
 
     Model.prototype.setHeader = function(header) {
-      this.headers.push(header);
+      var h = _.find(this.headers, {id: header.id});
+      if (!h) {
+        this.headers.push(header);
+      }
     };
 
     Model.prototype.setImg = function(img) {
-      this.imgs.push(img);
+      var i = _.find(this.imgs, {id: img.id});
+      if (!i) {
+        this.imgs.push(img);
+      }
     };
 
 

@@ -26,7 +26,10 @@
     };
 
     Model.prototype.setPara = function(para) {
-      this.paragraphs.push(para);
+      var p = _.find(this.paragraphs, {id: para.id});
+      if (!p) {
+        this.paragraphs.push(para);
+      }
     };
 
     return Model;
