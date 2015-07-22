@@ -15,7 +15,7 @@
         <h3>{{Post.post.headers[0].attributes.text}}</h3>
         <p my-para header="Post.post.headers[0]" limit="1" start="0"></p>
 
-        <h3>{{Post.post.headers[1].attributes.text}}</h3>
+        <h3 ng-click="Post.post.headers[1].edit()">{{Post.post.headers[1].attributes.text}}</h3>
         <p my-para header="Post.post.headers[1]" limit="1" start="0"></p>
 
         <h3>{{Post.post.headers[2].attributes.text}}</h3>

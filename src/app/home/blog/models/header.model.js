@@ -6,8 +6,8 @@
 (function() {
   angular.module('home')
     .factory('Header', Header);
-
-  function Header() {
+  /*@ngInject*/
+  function Header(Crud) {
     var Model = function(data) {
       data.paragraphs = [];
       angular.extend(this, data);
@@ -32,6 +32,12 @@
       }
     };
 
+    Model.prototype.edit = function() {
+      var self = this;
+      Crud.update(self).then(function(header) {
+        self.text = header.text;
+      });
+    };
     return Model;
   }
 })();
