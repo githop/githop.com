@@ -57,14 +57,15 @@
       if (img) {
         var i = _.find(this.imgs, {id: img.id});
         if (!i) {
-          img.id = _.parseInt(img.id);
           this.imgs.push(img);
         }
       }
     };
 
     Model.prototype.sortImgs = function() {
-      _.sortBy(this.imgs, 'id');
+      this.imgs = _.sortBy(this.imgs, function(i) {
+        return _.parseInt(i.id);
+      });
     };
 
     return Model;
