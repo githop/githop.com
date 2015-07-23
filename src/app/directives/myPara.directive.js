@@ -6,7 +6,7 @@
   'use strict';
   angular.module('githopwww')
     .directive('myPara', myPara);
-  //ngInject
+  //@ngInject
   function myPara() {
 
     var _paraCtrl = function(User) {
@@ -30,7 +30,7 @@
         limit: '@',
         start: '@'
       },
-      controller:/*ngInject*/_paraCtrl,
+      controller:/*@ngInject*/_paraCtrl,
       controllerAs: 'c',
       bindToController: true
     }

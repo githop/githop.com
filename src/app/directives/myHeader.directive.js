@@ -5,7 +5,7 @@
 (function() {
   angular.module('githopwww')
     .directive('myHeader', myHeader);
-
+  /*@ngInject*/
   function myHeader() {
 
     var _ctrl = function(User) {
@@ -23,7 +23,7 @@
       scope: {
         header: '='
       },
-      controller:/*ngInject*/_ctrl,
+      controller:/*@ngInject*/_ctrl,
       controllerAs: 'c',
       bindToController: true
     }

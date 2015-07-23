@@ -6,7 +6,7 @@
 (function() {
   angular.module('home')
     .factory('Para', Para);
-  //ngInject
+  //@ngInject
   function Para(Crud) {
     var Model = function(data) {
       this.setData(data);

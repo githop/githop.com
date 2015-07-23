@@ -7,7 +7,7 @@
   angular.module('home')
     .factory('Resources', Resources);
 
-  //ngInject
+  //@ngInject
   function Resources($http, $q, Article, Header, Para, Img, API_URL) {
     var resourceManager = {};
 

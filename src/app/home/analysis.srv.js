@@ -5,7 +5,7 @@
 (function() {
   angular.module('home')
     .factory('Analysis', Analysis);
-  //ngInject
+  //@ngInject
   function Analysis($http, $q, API_URL) {
     var Analysis = {};
 

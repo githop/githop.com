@@ -6,7 +6,7 @@
 (function() {
   angular.module('home')
     .factory('Crud', Crud);
-  //ngInject
+  //@ngInject
   function Crud($http, $q, $mdDialog, API_URL) {
     var crudService = {};
 
@@ -15,7 +15,7 @@
     var _buildDialog = function(self) {
       return function(ctrl) {
         return {
-          controller: /*ngInject*/ ctrl,
+          controller:/*@ngInject*/ctrl,
           controllerAs: 'ctrl',
           bindToController: true,
           locals: {resource: self},
@@ -37,7 +37,7 @@
     };
 
     var _ctrlBuilder = function(updatefn) {
-      return function($mdDialog, resource) {
+      return /*@ngInject*/function($mdDialog, resource) {
         var ctrl = this;
         ctrl.type = _.capitalize(resource.type).slice(0, -1);
         ctrl.res = resource;
