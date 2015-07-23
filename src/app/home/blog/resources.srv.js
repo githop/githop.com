@@ -58,6 +58,7 @@
 
         var u = _.find(resources.users, {id: a.getAuthorId()});
         a.setAuthor(u);
+        a.sortImgs();
       });
 
       //assoc headers w paras

@@ -45,20 +45,27 @@
     };
 
     Model.prototype.setHeader = function(header) {
-      var h = _.find(this.headers, {id: header.id});
-      if (!h) {
-        this.headers.push(header);
+      if (header) {
+        var h = _.find(this.headers, {id: header.id});
+        if (!h) {
+          this.headers.push(header);
+        }
       }
     };
 
     Model.prototype.setImg = function(img) {
-      var i = _.find(this.imgs, {id: img.id});
-      if (!i) {
-        this.imgs.push(img);
+      if (img) {
+        var i = _.find(this.imgs, {id: img.id});
+        if (!i) {
+          img.id = _.parseInt(img.id);
+          this.imgs.push(img);
+        }
       }
     };
 
-
+    Model.prototype.sortImgs = function() {
+      _.sortBy(this.imgs, 'id');
+    };
 
     return Model;
   }

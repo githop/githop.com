@@ -13,16 +13,16 @@
         <h1>{{Post.post.attributes.title}}</h1>
         <p>Posted on: {{Post.post.attributes.postedOn | date}}, By:{{Post.post.author.attributes.username}}</p>
 
-        <h3>{{Post.post.headers[0].attributes.text}}</h3>
+        <my-header header="Post.post.headers[0]"></my-header>
         <p my-para header="Post.post.headers[0]" start="0" limit="4"></p>
 
-        <h3>{{Post.post.headers[1].attributes.text}}</h3>
+        <my-header header="Post.post.headers[1]"></my-header>
         <p my-para header="Post.post.headers[1]" start="0" limit="5"></p>
 
-        <h3>{{Post.post.headers[2].attributes.text}}</h3>
+        <my-header header="Post.post.headers[2]"></my-header>
         <p my-para header="Post.post.headers[2]" start="0" limit="5"></p>
 
-        <h3>{{Post.post.headers[3].attributes.text}}</h3>
+        <my-header header="Post.post.headers[3]"></my-header>
         <p my-para header="Post.post.headers[3]" start="0" limit="2"></p>
         <div class="post-img">
           <p><code>auth_controller.rb</code></p>
@@ -45,7 +45,7 @@
 
         <p my-para header="Post.post.headers[3]" start="8" limit="1"></p>
 
-        <h3>{{Post.post.headers[4].attributes.text}}</h3>
+        <my-header header="Post.post.headers[4]"></my-header>
         <p my-para header="Post.post.headers[4]" start="0" limit="1"></p>
 
       </md-card-content>

@@ -9,8 +9,10 @@
   /*@ngInject*/
   function Header(Crud) {
     var Model = function(data) {
-      data.paragraphs = [];
-      angular.extend(this, data);
+      if (data) {
+        data.paragraphs = [];
+        angular.extend(this, data);
+      }
     };
 
     var _pluckIds = function(type, rels) {
@@ -26,18 +28,23 @@
     };
 
     Model.prototype.setPara = function(para) {
-      var p = _.find(this.paragraphs, {id: para.id});
-      if (!p) {
-        this.paragraphs.push(para);
+      if (para) {
+        var p = _.find(this.paragraphs, {id: para.id});
+        if (!p) {
+          this.paragraphs.push(para);
+        }
       }
     };
 
     Model.prototype.edit = function() {
       var self = this;
       Crud.update(self).then(function(header) {
-        self.text = header.text;
+        if (header != undefined) {
+          self.text = header.text;
+        }
       });
     };
+
     return Model;
   }
 })();

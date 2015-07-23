@@ -13,36 +13,36 @@
         <h1>{{Post.post.attributes.title}}</h1>
         <p>Posted on: {{Post.post.attributes.postedOn | date}}, By:{{Post.post.author.attributes.username}}</p>
 
-        <h3>{{Post.post.headers[0].attributes.text}}</h3>
+        <my-header header="Post.post.headers[0]"></my-header>
         <p my-para header="Post.post.headers[0]" limit="1" start="0"></p>
 
-        <h3>{{Post.post.headers[1].attributes.text}}</h3>
+        <my-header header="Post.post.headers[1]"></my-header>
         <p my-para header="Post.post.headers[1]" limit="2" start="0"></p>
 
-        <h3>{{Post.post.headers[2].attributes.text}}</h3>
+        <my-header header="Post.post.headers[2]"></my-header>
 
         <p my-para header="Post.post.headers[2]" limit="1" start="0"></p>
         <div class="post-img"><img ng-src="{{Post.post.imgs[1].attributes.href}}" alt="{{Post.post.imgs[1].attributes.title}}"/></div>
         <p my-para header="Post.post.headers[2]" limit="1" start="1"></p>
         <div class="post-img"><img ng-src="{{Post.post.imgs[2].attributes.href}}" alt="{{Post.post.imgs[2].attributes.title}}"/></div>
 
-        <h3>{{Post.post.headers[3].attributes.text}}</h3>
+        <my-header header="Post.post.headers[3]"></my-header>
         <p my-para header="Post.post.headers[3]" limit="1" start="0"></p>
         <div class="post-img"><img ng-src="{{Post.post.imgs[3].attributes.href}}" alt="{{Post.post.imgs[3].attributes.title}}"/></div>
 
-        <h3>{{Post.post.headers[4].attributes.text}}</h3>
+        <my-header header="Post.post.headers[4]"></my-header>
         <p my-para header="Post.post.headers[4]" limit="2" start="0"></p>
 
-        <h3>{{Post.post.headers[5].attributes.text}}</h3>
+        <my-header header="Post.post.headers[5]"></my-header>
         <p my-para header="Post.post.headers[5]" limit="1" start="0"></p>
 
-        <h3>{{Post.post.headers[6].attributes.text}}</h3>
+        <my-header header="Post.post.headers[6]"></my-header>
         <p my-para header="Post.post.headers[6]" limit="2" start="0"></p>
         <div class="post-img"><img ng-src="{{Post.post.imgs[4].attributes.href}}" alt="{{Post.post.imgs[4].attributes.title}}"/></div>
         <p my-para header="Post.post.headers[6]" limit="1" start="2"></p>
 
 
-        <h3>{{Post.post.headers[7].attributes.text}}</h3>
+        <my-header header="Post.post.headers[7]"></my-header>
         <p my-para header="Post.post.headers[7]" limit="3" start="0"></p>
 
 

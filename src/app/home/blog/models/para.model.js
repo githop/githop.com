@@ -19,7 +19,9 @@
     Model.prototype.edit = function() {
       var self = this;
       Crud.update(self).then(function(para) {
-        self.body = para.body;
+        if (para !== undefined) {
+          self.body = para.body;
+        }
       })
     };
 
