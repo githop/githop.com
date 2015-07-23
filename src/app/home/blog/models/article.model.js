@@ -5,6 +5,7 @@
 
 
 (function() {
+  'use strict';
   angular.module('home')
     .factory('Article', Article);
 

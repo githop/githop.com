@@ -4,6 +4,7 @@
  */
 
 (function() {
+  'use strict';
   angular.module('home')
     .factory('Para', Para);
   //@ngInject

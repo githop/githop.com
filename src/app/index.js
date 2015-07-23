@@ -5,7 +5,7 @@ angular.module('githopwww', [
   'ngTouch', 'ngSanitize',
   'ui.router', 'ngMaterial',
   'home', 'duScroll',
-  'ngDonut'
+  'ngDonut', 'ng-appcache'
 ])
   .value('duScrollOffset', 70)
 
