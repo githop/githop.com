@@ -7,7 +7,7 @@
   angular.module('home')
     .factory('Crud', Crud);
   //@ngInject
-  function Crud($http, $q, $mdDialog, API_URL) {
+  function Crud($http, $q, $mdDialog, $mdToast, API_URL) {
     var crudService = {};
 
     crudService.update = update;
@@ -27,27 +27,40 @@
 
     var _updateResource = function(data, resource) {
       var dfd = $q.defer();
+      var type = _.capitalize(resource.type).slice(0, -1);
       $http.put(API_URL + '/' + resource.type + '/' + resource.id, data)
         .then(function(resp) {
-          dfd.resolve(resp.data.data.attributes);
+          var happy = $mdToast.simple().content(type + ' Updated!');
+          _handleUpdate({attr: resp.data.data.attributes}, dfd, happy);
         }, function(e) {
-          dfd.reject(e);
+          var sad = $mdToast.simple()
+            .content('Uh Oh, try again! ' + e.status + ' ' + e.statusText);
+          _handleUpdate({error: e, toast: sad}, dfd, sad);
         });
       return dfd.promise;
     };
 
-    var _ctrlBuilder = function(updatefn) {
+    var _handleUpdate = function(data, dfd, toast) {
+      if (_.isUndefined(data.error)) {
+        dfd.resolve(data.attr);
+      } else {
+        dfd.reject(data.error);
+      }
+      $mdToast.show(toast);
+    };
+
+    var _ctrlBuilder = function(updateFn) {
       return /*@ngInject*/function($mdDialog, resource) {
         var ctrl = this;
         ctrl.type = _.capitalize(resource.type).slice(0, -1);
-        ctrl.res = resource;
+        ctrl.copy = angular.copy(resource.attributes);
         ctrl.cancel = function() {
           $mdDialog.hide();
         };
 
         ctrl.edit = function(attr) {
-          updatefn(attr, resource).then(function(attributes) {
-            $mdDialog.hide({attributes: attributes});
+          updateFn(attr, resource).then(function(data) {
+            $mdDialog.hide(data);
           });
         }
       }

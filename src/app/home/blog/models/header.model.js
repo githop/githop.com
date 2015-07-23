@@ -40,7 +40,7 @@
       var self = this;
       Crud.update(self).then(function(header) {
         if (header != undefined) {
-          self.text = header.text;
+          self.attributes.text = header.text;
         }
       });
     };

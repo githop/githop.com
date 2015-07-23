@@ -1,4 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,700|Roboto:400,700,700italic,400italic);
+@font-face {
+  src: url('../assets/fonts/Roboto-Regular.ttf');
+}
 
 html {
   font-family: 'Roboto', sans-serif;
@@ -7,6 +9,11 @@ html {
 
 body, #body {
   background-color: #81bb10;
+}
+
+md-toast {
+  position: fixed;
+
 }
 
 .pre-load {

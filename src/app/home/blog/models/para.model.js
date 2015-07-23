@@ -20,7 +20,7 @@
       var self = this;
       Crud.update(self).then(function(para) {
         if (para !== undefined) {
-          self.body = para.body;
+          self.attributes.body = para.body;
         }
       })
     };

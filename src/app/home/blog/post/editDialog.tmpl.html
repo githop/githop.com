@@ -1,5 +1,5 @@
 <md-dialog class="edit-para">
-  <md-toolbar>
+  <md-toolbar class="md-warn">
     <div class="md-toolbar-tools">
       <h4>Edit {{ctrl.type}}</h4>
     </div>
@@ -9,16 +9,16 @@
     <div class="md-actions" layout="row" ng-if="ctrl.type === 'Header'">
       <md-input-container flex>
         <label>{{ctrl.type}}</label>
-        <textarea ng-model="ctrl.res.attributes.text"></textarea>
+        <textarea ng-model="ctrl.copy.text"></textarea>
       </md-input-container>
     </div>
     <div class="md-actions" layout="row" ng-if="ctrl.type === 'Paragraph'">
       <md-input-container flex>
         <label>{{ctrl.type}}</label>
-        <textarea ng-model="ctrl.res.attributes.body"></textarea>
+        <textarea ng-model="ctrl.copy.body"></textarea>
       </md-input-container>
     </div>
-    <md-button ng-click="ctrl.edit({data: ctrl.res.attributes})">save</md-button>
+    <md-button ng-click="ctrl.edit({data: ctrl.copy})">save</md-button>
     <md-button ng-click="ctrl.cancel()">cancel</md-button>
   </md-dialog-content>
 </md-dialog>
