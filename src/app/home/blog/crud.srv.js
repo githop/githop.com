@@ -54,16 +54,8 @@
     };
 
     function update(self) {
-      var dialog;
       var builder = _buildDialog(self);
-      if (self.type === 'headers') {
-        dialog = builder(_ctrlBuilder(_updateResource));
-
-      } else if (self.type === 'paragraphs') {
-
-        dialog = builder(_ctrlBuilder(_updateResource))
-      }
-
+      var dialog = builder(_ctrlBuilder(_updateResource));
       return $mdDialog.show(dialog);
     }
 
