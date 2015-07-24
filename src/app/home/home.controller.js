@@ -4,7 +4,7 @@
   angular.module('home')
     .controller('HomeCtrl', HomeCtrl);
   /*ngInject*/
-  function HomeCtrl($mdDialog, $mdToast, User, Analysis, appcache) {
+  function HomeCtrl($mdDialog, User, Analysis, Updates) {
     var Home = this;
 
     Home.analyzeWords = analyzeWords;
@@ -12,13 +12,7 @@
     Home.logOut = logOut;
     Home.currentUser = User.currentUser();
 
-
-    appcache.checkUpdate().then(function() {
-      var toast = $mdToast.simple()
-        .content('App Updated - Refresh Page')
-        .hideDelay(false);
-      $mdToast.show(toast);
-    });
+    Updates.check();
 
     function analyzeWords(words) {
       var _resultsController = /*ngInject*/function($mdDialog, analysis) {
