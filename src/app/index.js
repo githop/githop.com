@@ -11,8 +11,12 @@ angular.module('githopwww', [
 
   .constant('API_URL', 'http://githop.com')
 
-  .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $httpProvider, $compileProvider, API_URL) {
     $httpProvider.interceptors.push('AuthInterceptor');
+
+    if (API_URL === 'http://githop.com') {
+      $compileProvider.debugInfoEnabled(false);
+    }
 
     $stateProvider
       .state('home', {

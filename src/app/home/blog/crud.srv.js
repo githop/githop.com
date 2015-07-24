@@ -26,6 +26,23 @@
       };
     };
 
+    var _ctrlBuilder = function(updateFn) {
+      return /*@ngInject*/function($mdDialog, resource) {
+        var ctrl = this;
+        ctrl.type = _.capitalize(resource.type).slice(0, -1);
+        ctrl.copy = angular.copy(resource.attributes);
+        ctrl.cancel = function() {
+          $mdDialog.hide();
+        };
+
+        ctrl.edit = function(attr) {
+          updateFn(attr, resource).then(function(data) {
+            $mdDialog.hide(data);
+          });
+        }
+      }
+    };
+
     var _updateResource = function(data, resource) {
       var dfd = $q.defer();
       var type = _.capitalize(resource.type).slice(0, -1);
@@ -48,23 +65,6 @@
         dfd.reject(data.error);
       }
       $mdToast.show(toast);
-    };
-
-    var _ctrlBuilder = function(updateFn) {
-      return /*@ngInject*/function($mdDialog, resource) {
-        var ctrl = this;
-        ctrl.type = _.capitalize(resource.type).slice(0, -1);
-        ctrl.copy = angular.copy(resource.attributes);
-        ctrl.cancel = function() {
-          $mdDialog.hide();
-        };
-
-        ctrl.edit = function(attr) {
-          updateFn(attr, resource).then(function(data) {
-            $mdDialog.hide(data);
-          });
-        }
-      }
     };
 
     function update(self) {
