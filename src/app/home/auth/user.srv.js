@@ -9,7 +9,7 @@
     .factory('User', User);
 
   /*ngInject*/
-  function User(AuthToken, API_URL, $http, $q, $window) {
+  function User($http, $q, $window, $mdDialog, AuthToken, API_URL) {
 
     var User = {};
     //private properties
@@ -38,9 +38,7 @@
       }
     };
 
-    _init();
-
-    function login(email, password) {
+    function _login(email, password) {
       var dfd = $q.defer();
       $http.post(API_URL + '/auth/login', {
         data: {
@@ -56,6 +54,38 @@
       });
 
       return dfd.promise;
+    }
+
+    var _dialogController = function($mdDialog, $mdToast) {
+      var dialog = this;
+      dialog.test = 'hello world';
+
+      dialog.login = function(email, password) {
+        _login(email, password).then(function(user) {
+          var toast = $mdToast.simple()
+            .content('Welcome Back ' + user.username + '!');
+          $mdToast.show(toast);
+          $mdDialog.hide(user);
+        }, function(e) {
+          var error = $mdToast.simple().content('Whoops! ' + e.data.error);
+          $mdToast.show(error);
+        });
+      };
+      dialog.close = function() {
+        $mdDialog.hide();
+      };
+    };
+
+    _init();
+
+    function login(ev) {
+      return $mdDialog.show({
+        controller: /*ngInject*/ _dialogController,
+        controllerAs: 'dialog',
+        templateUrl: 'dialog1.tmpl.html',
+        parent: angular.element(document.body),
+        targetEv: ev
+      });
     }
 
     function logout() {

@@ -6,10 +6,40 @@
   angular.module('home')
     .factory('Analysis', Analysis);
   //@ngInject
-  function Analysis($http, $q, API_URL) {
+  function Analysis($http, $q, $mdDialog, API_URL) {
     var Analysis = {};
 
     Analysis.postWords = postWords;
+    Analysis.analyzeWords = analyzeWords;
+
+    var _resultsController = /*ngInject*/function($mdDialog, analysis) {
+      var results = this;
+      results.rank = analysis.rank;
+      results.words = analysis.words;
+
+      //positive, negative,  neutral
+      results.colors = ['#3F51B5', '#F44336', '#f1f1f1'];
+      results.chartData = analysis.chartData;
+      results.posWc = analysis.posWc;
+      results.negWc = analysis.negWc;
+      results.neuWc = analysis.neuWc;
+
+      results.close = function() {
+        $mdDialog.hide();
+      }
+    };
+
+    var _resultsModal = function(results) {
+      $mdDialog.show({
+        controller: _resultsController,
+        controllerAs: 'results',
+        templateUrl: 'results.tmpl.html',
+        parent: angular.element(document.body),
+        locals: {analysis: results}
+      }).then(function() {
+        console.log('closed');
+      });
+    };
 
     var _formatChartData = function(wc) {
       var chartData = [
@@ -40,6 +70,14 @@
       });
 
       return dfd.promise;
+    }
+
+    function analyzeWords(words) {
+      if (words) {
+        Analysis.postWords(words).then(function(results) {
+          _resultsModal(results);
+        });
+      }
     }
 
     return Analysis;

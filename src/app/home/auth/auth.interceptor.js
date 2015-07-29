@@ -30,7 +30,7 @@
       //only add token for crud methods on article resource
       if (isProtectedResource && !isTemplate) {
         if (isPost || isDelete || isPut || isPatch) {
-          console.log('gonna need that token!');
+          //console.log('gonna need that token!');
           if (token) {
             config.headers = config.headers || {};
             config.headers.Authorization = 'Bearer ' + token;

@@ -12,7 +12,8 @@
       </div>
     </md-toolbar>
     <md-dialog-content>
-      <p>Latest Change: <a ng-href="{{u.data.url}}" target="_blank">{{u.data.message}}</a></p>
+      <p>Latest Commit Message: <a ng-href="{{u.data.url}}" target="_blank">link</a></p>
+      <pre>{{u.data.message}}</pre>
       <p>By: {{u.data.author}} on {{u.data.date | date:'medium'}}</p>
       <div class="md-actions">
         <md-button ng-click="u.install()">install</md-button>
