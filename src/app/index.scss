@@ -13,7 +13,15 @@ body, #body {
 
 md-toast {
   position: fixed;
+  a:link {
+    text-decoration: underline;
+    color: white;
+  }
 
+  a:visited {
+    text-decoration: underline;
+    color: white;
+  }
 }
 
 .pre-load {
