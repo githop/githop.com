@@ -9,7 +9,7 @@
     .factory('User', User);
 
   /*ngInject*/
-  function User($http, $q, $window, $mdDialog, AuthToken, API_URL) {
+  function User($http, $q, $window, $mdDialog, $mdToast, AuthToken, API_URL) {
 
     var User = {};
     //private properties
@@ -90,6 +90,7 @@
 
     function logout() {
       AuthToken.setToken();
+      $mdToast.show($mdToast.simple().content('Logged out'));
       return _user = undefined;
     }
 
